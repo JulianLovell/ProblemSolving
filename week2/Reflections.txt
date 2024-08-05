@@ -1,0 +1,12 @@
+JULIAN'S LOGBOOK
+
+Problem 1 - ChangingString
+Initial Thoughts:
+I had to re-read the question many times before I think i now understand what it is asking for the problem. 
+The first thing that comes to mind is assigning each letter to its corresponding number first and then just working with the numbers instead by returning the A[i] - B[i] for example.
+I remember in another class converting letters to numbers using their ASCII values so i might look into doing that.
+From there i can find the differences and store these in a vector, then just sort and perform the operation on the K biggest to make their distance 0, which i think is what it is asking.
+After doing that i just find the new sum of the distances and return.
+
+Reflection:
+So it turns out that C++ inherently represents characters by their ASCII values for math operations, so that means a - b for example can work. I didn't know this, or at least forgot, so that is interesting and helpful.
