@@ -25,15 +25,19 @@ class ChangingString {
             differences[i] = abs(A[i] - B[i]);
         }
 
-        // Sort differences descending
-        sort(differences.begin(), differences.end(), greater<int>());
-        
+        // pair differences with the corresponding indices
+        vector<pair<int, int>> diffIndex;
+        for (int i = 0; i < n; i++) {
+            diffIndex.push_back({differences[i], i});
+        }
 
-        // Reduce the largest K differences to 0
+        // Sort differences pairs descending
+        sort(diffIndex.begin(), diffIndex.end(), greater<pair<int, int>>());
+
+        // make K changes to minimise
         for (int i = 0; i < K; i++) {
-            if (differences[i] > 0) {
-                differences[i] = 0;
-            }
+            int idx = diffIndex[i].second;
+            differences[idx] = 0;
         }
 
         // Sum up the remaining differences
