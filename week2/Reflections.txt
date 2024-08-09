@@ -28,4 +28,10 @@ to begin with the longest possible substring and then iterate through looking fo
 return 0 at the end in the event of none being found.
 
 Reflection:
-My first attempt passed the first test case, however failed the second because i didnt properly handle overlapping. I can fix this by changing how i am looking at the possible substrings and the overlap check.
+My first attempt passed the first test case, however failed the second because i didnt properly handle overlapping. I can fix this by changing how i am looking at the possible substrings and the overlap check. Ok that worked,
+and was actually simpler than my first version anyway.
+
+Problem 4 - EggCartons
+Initial Thoughts:
+This problem seems pretty straightforward. I can just iterate through with the largest possible increments (8) stopping once the cartons exceed n and then swapping in the smaller size cartons 1 by 1, i believe this is a greedy approach.
+I can also immediately return -1 for any odd number as that is not possible to get exactly given the carton sizes.
