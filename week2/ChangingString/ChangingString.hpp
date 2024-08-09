@@ -12,35 +12,33 @@
 using namespace std;
 
 class ChangingString {
-    public:
-
+public:
     int distance(string A, string B, int K) {
         int n = A.size();
-        int totalDistance = 0;
-
         vector<int> differences(n);
 
-        // Calc initial distances
+        // Calculate initial differences
         for (int i = 0; i < n; i++) {
             differences[i] = abs(A[i] - B[i]);
         }
 
-        // pair differences with the corresponding indices
-        vector<pair<int, int>> diffIndex;
-        for (int i = 0; i < n; i++) {
-            diffIndex.push_back({differences[i], i});
-        }
+        // Sort differences in descending order
+        sort(differences.begin(), differences.end(), greater<int>());
 
-        // Sort differences pairs descending
-        sort(diffIndex.begin(), diffIndex.end(), greater<pair<int, int>>());
-
-        // make K changes to minimise
+        // Minimize the largest differences by making changes
         for (int i = 0; i < K; i++) {
-            int idx = diffIndex[i].second;
-            differences[idx] = 0;
+            // If the difference is already zero, we should increase it to maximize distance reduction
+            if (differences[i] == 0) {
+                // change a character in A to a character that maximises the diff
+                differences[i] = 1;
+            } else {
+                // minimising the distance by matching character exactlky
+                differences[i] = 0;
+            }
         }
 
-        // Sum up the remaining differences
+        // Sum up the total distance after the changes
+        int totalDistance = 0;
         for (int i = 0; i < n; i++) {
             totalDistance += differences[i];
         }
@@ -48,4 +46,5 @@ class ChangingString {
         return totalDistance;
     }
 };
+
 

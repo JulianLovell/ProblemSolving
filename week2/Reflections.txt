@@ -10,3 +10,12 @@ After doing that i just find the new sum of the distances and return.
 
 Reflection:
 So it turns out that C++ inherently represents characters by their ASCII values for math operations, so that means a - b for example can work. I didn't know this, or at least forgot, so that is interesting and helpful.
+After first attempt and submission i realised that i wasn't doing it correctly. Just setting the largest K differences to 0 isnt the same as changing K characters in the string.
+
+
+Problem 2 - MooingCows
+Initial Thoughts:
+The steps i think i need to take for solving this problem are: find cow positions, calculate the disatisfaction then minimise that disatisfaction. Like most other problems i should start by creating a new list
+to store the cow positions and then i can loop through looking for 'C' and storing that location. I will begin by implementing this.
+
+Reflection:
