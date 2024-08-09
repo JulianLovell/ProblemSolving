@@ -35,3 +35,9 @@ Problem 4 - EggCartons
 Initial Thoughts:
 This problem seems pretty straightforward. I can just iterate through with the largest possible increments (8) stopping once the cartons exceed n and then swapping in the smaller size cartons 1 by 1, i believe this is a greedy approach.
 I can also immediately return -1 for any odd number as that is not possible to get exactly given the carton sizes.
+
+Problem 5 - AlternateColors
+Initial Thoughts:
+I basically need to simulate the robot destroying the balls and can do this by just iterating through performing each of the checks and deleting the corresponding ball, then just returning the colour of the deleted ball at k.
+
+Reflection:
