@@ -30,6 +30,11 @@ public:
                 // Return if this is the Kth ball destroyed
                 if (destroyed == k) return "BLUE";
             }
+
+            // If there are no more balls to destroy, break the loop
+            if (r == 0 && g == 0 && b == 0) {
+                break;
+            }
         }
 
         return "";
