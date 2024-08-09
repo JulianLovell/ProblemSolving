@@ -19,3 +19,12 @@ The steps i think i need to take for solving this problem are: find cow position
 to store the cow positions and then i can loop through looking for 'C' and storing that location. I will begin by implementing this.
 
 Reflection:
+I kept going after that beginning code and added another set of loops to calc the disatisfaction if a cow moos, then finally just updating the new min satisfaction. 
+
+Problem 3 - Reppity
+Initial Thoughts:
+I picked this one to do mainly because i liked the name. In terms of solving it, i think i will need to do something to iterate over all of the possible substring lengths. The first thing that comes to mind is
+to begin with the longest possible substring and then iterate through looking for a match, shorterning it until i do find a match, however this seems very inefficient. I will try this first. I should also make sure to
+return 0 at the end in the event of none being found.
+
+Reflection:
