@@ -1,10 +1,10 @@
-#include <string>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
 class AlternateColors {
-public:
+   public:
     string getColor(long r, long g, long b, long k) {
         k -= 1;
         // Find the number of full cycles we can skip
@@ -23,24 +23,37 @@ public:
         g -= fullCycles;
         b -= fullCycles;
 
-        // Handle remaining destructions in loop
-        while (k > 0) {
-            if (r > 0) {
-                r--;
-                k--;
-                if (k == 0) return "RED";
+        if (r <= 0) {
+            // left with green and blue
+            fullCycles = min(g, b);
+            if (k < 2 * fullCycles) {
+                return k % 2 == 0 ? "GREEN" : "BLUE";
             }
-            if (g > 0) {
-                g--;
-                k--;
-                if (k == 0) return "GREEN";
+            g -= fullCycles;
+            b -= fullCycles;
+            k -= 2 * fullCycles;
+        } else if (g <= 0) {
+            // left with red and blue
+            fullCycles = min(r, b);
+            if (k < 2 * fullCycles) {
+                return k % 2 == 0 ? "RED" : "BLUE";
             }
-            if (b > 0) {
-                b--;
-                k--;
-                if (k == 0) return "BLUE";
+            r -= fullCycles;
+            b -= fullCycles;
+            k -= 2 * fullCycles;
+        } else if (b <= 0) {
+            // left with red and green
+            fullCycles = min(r, g);
+            if (k < 2 * fullCycles) {
+                return k % 2 == 0 ? "RED" : "GREEN";
             }
+            r -= fullCycles;
+            g -= fullCycles;
+            k -= 2 * fullCycles;
         }
+        if (r > 0) return "RED";
+        if (g > 0) return "GREEN";
+        return "BLUE";
 
         return "";  // Should not reach here
     }
