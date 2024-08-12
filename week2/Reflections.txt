@@ -12,7 +12,6 @@ Reflection:
 So it turns out that C++ inherently represents characters by their ASCII values for math operations, so that means a - b for example can work. I didn't know this, or at least forgot, so that is interesting and helpful.
 After first attempt and submission i realised that i wasn't doing it correctly. Just setting the largest K differences to 0 isnt the same as changing K characters in the string.
 
-
 Problem 2 - MooingCows
 Initial Thoughts:
 The steps i think i need to take for solving this problem are: find cow positions, calculate the disatisfaction then minimise that disatisfaction. Like most other problems i should start by creating a new list
@@ -42,3 +41,5 @@ I basically need to simulate the robot destroying the balls and can do this by j
 
 Reflection:
 My first attempt seemed to be getting stuck in a loop. I am first going to assume that this is occuring on test cases where K may be greater than the number of balls available.
+Wasn't dealing with the size of the input so was timing out, had to revise the approach a bit. 
+Fixed issues with my base cases, I was effectively returning the colour 1 too early.
