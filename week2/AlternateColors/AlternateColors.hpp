@@ -6,9 +6,10 @@ using namespace std;
 class AlternateColors {
 public:
     string getColor(long r, long g, long b, long k) {
+        k -= 1;
         // Find the number of full cycles we can skip
         long fullCycles = min(r, min(g, b));
-        if (k <= 3 * fullCycles) {
+        if (k < 3 * fullCycles) {
             k = k % 3;
             if (k == 0) k = 3;
             if (k == 1) return "RED";
