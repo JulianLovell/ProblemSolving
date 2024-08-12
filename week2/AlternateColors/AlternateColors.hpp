@@ -1,38 +1,46 @@
 #include <string>
+#include <algorithm>
+
 using namespace std;
 
 class AlternateColors {
 public:
     string getColor(long r, long g, long b, long k) {
-        // Loop through destorying in the order of Red, Green, Blue, skipping if none and then stopping and returning final destroyed ball if Kth destruction
+        // Find the number of full cycles we can skip
+        long fullCycles = min(r, min(g, b));
+        if (k <= 3 * fullCycles) {
+            k = k % 3;
+            if (k == 0) k = 3;
+            if (k == 1) return "RED";
+            if (k == 2) return "GREEN";
+            return "BLUE";
+        }
+
+        // Reduce k by the number of full cycles skipped
+        k -= 3 * fullCycles;
+        r -= fullCycles;
+        g -= fullCycles;
+        b -= fullCycles;
+
+        // Handle remaining destructions in loop
         while (k > 0) {
-            // Red ball destruction
             if (r > 0) {
                 r--;
                 k--;
                 if (k == 0) return "RED";
             }
-
-            // Green ball destruction
             if (g > 0) {
                 g--;
                 k--;
                 if (k == 0) return "GREEN";
             }
-
-            // Blue ball destruction
             if (b > 0) {
                 b--;
                 k--;
                 if (k == 0) return "BLUE";
             }
-            
-            // If all balls are destroyed and k hasn't reached 0
-            if (r == 0 && g == 0 && b == 0) {
-                break;
-            }
         }
 
-        return "";
+        return "";  // Should not reach here
     }
 };
