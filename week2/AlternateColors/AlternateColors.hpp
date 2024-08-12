@@ -11,9 +11,8 @@ class AlternateColors {
         long fullCycles = min(r, min(g, b));
         if (k < 3 * fullCycles) {
             k = k % 3;
-            if (k == 0) k = 3;
-            if (k == 1) return "RED";
-            if (k == 2) return "GREEN";
+            if (k == 0) return "RED";
+            if (k == 1) return "GREEN";
             return "BLUE";
         }
 
