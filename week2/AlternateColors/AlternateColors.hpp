@@ -4,17 +4,30 @@ using namespace std;
 class AlternateColors {
 public:
     string getColor(long r, long g, long b, long k) {
-        // If kth ball is red then return RED
-        if (k <= r+1) {
-            return "RED";
+        // Loop through destorying in the order of Red, Green, Blue, skipping if none and then stopping and returning final destroyed ball if Kth destruction
+        while (k > 0) {
+            // Red ball destruction
+            if (r > 0) {
+                r--;
+                k--;
+                if (k == 0) return "RED";
+            }
+
+            // Green ball destruction
+            if (g > 0) {
+                g--;
+                k--;
+                if (k == 0) return "GREEN";
+            }
+
+            // Blue ball destruction
+            if (b > 0) {
+                b--;
+                k--;
+                if (k == 0) return "BLUE";
+            }
         }
-        
-        // If kth ball is green then return green
-        if (k <= r + g+1) {
-            return "GREEN";
-        }
-        
-        // Otherwise kth ball must be blue
-        return "BLUE";
+
+        return "";
     }
 };
