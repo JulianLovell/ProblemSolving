@@ -26,6 +26,11 @@ public:
                 k--;
                 if (k == 0) return "BLUE";
             }
+            
+            // If all balls are destroyed and k hasn't reached 0
+            if (r == 0 && g == 0 && b == 0) {
+                break;
+            }
         }
 
         return "";

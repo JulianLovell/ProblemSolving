@@ -41,3 +41,4 @@ Initial Thoughts:
 I basically need to simulate the robot destroying the balls and can do this by just iterating through performing each of the checks and deleting the corresponding ball, then just returning the colour of the deleted ball at k.
 
 Reflection:
+My first attempt seemed to be getting stuck in a loop. I am first going to assume that this is occuring on test cases where K may be greater than the number of balls available.
