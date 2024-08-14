@@ -11,4 +11,4 @@ My first implementation did pretty well however there are two cases i seem to no
 character should still be counted as a continuation of the arrow. Secondly i was not counting the arrow head as an arrow so for cases like '<<<<' it was returning 0 instead of 1. These should be simple fixes by changing
 how i search for the arrow characters and changing the initial length value on left facing arrows. On the new implementation i was incorrectly count '>' at the end of the right facing arrows. Upon looking at fixing this
 i re-read the description and decided to take a slightly different approach. I re-wrote some of the program keeping parts. This new approach makes more sense and should handle these different cases correctly without
-adding new functions.
+adding new functions. I made a super small change fixing the check for updating the length of the current longest arrow, expecting it to only fix 1 or 2 test cases, but ive gotten full marks now so we're good to go.
