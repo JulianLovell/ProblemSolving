@@ -2,6 +2,11 @@ JULIAN'S LOGBOOK
 
 Problem 1 - Arrows
 Initial Thoughts:
-Initially i misunderstood the question and thought it was asking to return the number of arrows not just the longest one. Now understanding this, i would say the first step will be to identify the possible arrows (<-, <=, ->, =>), and then possibly iterate through each when found, checking its length. I figuer that while doing that i can just have another variable called something like longestFound and i can check the length of the arrow we are currently on against the longest so far, updating if necessary.
+Initially i misunderstood the question and thought it was asking to return the number of arrows not just the longest one. 
+Now understanding this, i would say the first step will be to identify the possible arrows (<-, <=, ->, =>), and then possibly iterate through each when found, checking its length. 
+I figure that while doing that i can just have another variable called something like longestFound and i can check the length of the arrow we are currently on against the longest so far, updating if necessary.
 
 Reflection:
+My first implementation did pretty well however there are two cases i seem to not be handling correcty, which i did expect. Firstly, I am not correctly counting arrows that go from '-' to '=' as that second
+character should still be counted as a continuation of the arrow. Secondly i was not counting the arrow head as an arrow so for cases like '<<<<' it was returning 0 instead of 1. These should be simple fixes by changing
+how i search for the arrow characters and changing the initial length value on left facing arrows.
