@@ -8,39 +8,59 @@ public:
     int longestArrow(string s) {
         int longestFound = -1;
 
-        // Iterate over the string to find potential arrows
+        // Iterate over the string to find left facing arrows
         for (int i = 0; i < s.length(); i++) {
-            // Start counting length from the first character
-            int length = 1;
-
-            // Check for left single arrow "<-" or "<="
             if (s[i] == '<') {
+                // Start count with the '<'
+                int length = 1;
                 int temp = i + 1;
-                while (temp < s.length() && (s[temp] == '-' || s[temp] == '=')) {
-                    length++;
-                    temp++;
-                }
-                longestFound = max(longestFound, length);
-            }
 
-            // Check for right single arrow "->" or "=>"
-            if (s[i] == '-' || s[i] == '=') {
-                length = 0;
-                int temp = i;
-                while (temp < s.length() && (s[temp] == '-' || s[temp] == '=')) {
+                // First check for a left double arrow "<="
+                while (temp < s.length() && s[temp] == '=') {
                     length++;
                     temp++;
                 }
-                if (temp < s.length() && s[temp] == '>') {
-                    // Include arrow head
-                    length++;
+
+                // If no '=' was found, check for left single arrow "<-"
+                if (length == 1) {
+                    temp = i + 1;
+                    while (temp < s.length() && s[temp] == '-') {
+                        length++;
+                        temp++;
+                    }
+                }
+
+                // Update the longest arrow found
+                if (length > 1) {
                     longestFound = max(longestFound, length);
                 }
             }
+        }
 
-            // Check for just ">" or "<"
-            if (s[i] == '<' || s[i] == '>') {
-                longestFound = max(longestFound, 1);
+        // Iterate over the string to find right facing arrows
+        for (int i = 0; i < s.length(); i++) {
+            int length = 0;
+            int temp = i;
+
+            // First check for a right double arrow "=>"
+            while (temp < s.length() && s[temp] == '=') {
+                length++;
+                temp++;
+            }
+
+            // If no '=' was found, check for right single arrow "->"
+            if (length == 0) {
+                temp = i;
+                while (temp < s.length() && s[temp] == '-') {
+                    length++;
+                    temp++;
+                }
+            }
+
+            // If we find a '>', complete the arrow
+            if (temp < s.length() && s[temp] == '>') {
+                length++;
+                longestFound = max(longestFound, length);
             }
         }
 
