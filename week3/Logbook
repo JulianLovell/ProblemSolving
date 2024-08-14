@@ -1,0 +1,7 @@
+JULIAN'S LOGBOOK
+
+Problem 1 - Arrows
+Initial Thoughts:
+Initially i misunderstood the question and thought it was asking to return the number of arrows not just the longest one. Now understanding this, i would say the first step will be to identify the possible arrows (<-, <=, ->, =>), and then possibly iterate through each when found, checking its length. I figuer that while doing that i can just have another variable called something like longestFound and i can check the length of the arrow we are currently on against the longest so far, updating if necessary.
+
+Reflection:
