@@ -6,6 +6,7 @@ using namespace std;
 class Arrows {
 public:
     int longestArrow(string s) {
+        // Set initial value to -1 so that if none are found then this is returned
         int longestFound = -1;
 
         // Iterate over the string to find potential arrows
@@ -47,7 +48,8 @@ public:
                     temp++;
                 }
                 if (temp < s.length() && s[temp] == '>') {
-                    length++; // Include the '>'
+                    // Then include the '>'
+                    length++;
                     longestFound = max(longestFound, length);
                 }
             }
@@ -61,7 +63,6 @@ public:
                     temp++;
                 }
                 if (temp < s.length() && s[temp] == '>') {
-                    // Then include the ">"
                     length++;
                     longestFound = max(longestFound, length);
                 }
