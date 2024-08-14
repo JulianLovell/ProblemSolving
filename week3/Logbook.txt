@@ -12,3 +12,20 @@ character should still be counted as a continuation of the arrow. Secondly i was
 how i search for the arrow characters and changing the initial length value on left facing arrows. On the new implementation i was incorrectly count '>' at the end of the right facing arrows. Upon looking at fixing this
 i re-read the description and decided to take a slightly different approach. I re-wrote some of the program keeping parts. This new approach makes more sense and should handle these different cases correctly without
 adding new functions. I made a super small change fixing the check for updating the length of the current longest arrow, expecting it to only fix 1 or 2 test cases, but ive gotten full marks now so we're good to go.
+
+
+Problem 2 - ExerciseMachine
+Initial Thoughts:
+I've chosen to do this one before actually reading it because i like going to the gym. After reading it, the only thing that comes to mind is possibly converting the time to be a single number such as seconds, which
+would mean the largest number to work with would be 85999. I could then calculate every whole number percentage of that large number and return how many it is. That might be possible but i imagine highligy inefficient. However i will begin with that unless i think of something else.
+
+Reflection:
+I'm amazed my very first iteration worked. It was very straigth forward and short to write so ill take that. I wonder if that is the intended way to solve it as i imagine there is a far more efficient method.
+
+
+Problem 3 - StrangeComputer
+Initial Thoughts:
+I imagine that i can iteration from the largest bit value, so starting from the left, and iterate until i encounter a character that does not match the character in that position of the given memory value. 
+Then i just select that element and the number it should be then update the string to match. Then continue iterating through the updated string. I should also initialise the string to be all 0's.
+
+Reflection:
