@@ -31,7 +31,7 @@ public:
                 }
 
                 // Update the longest arrow found
-                if (length > 1) {
+                if (length > 0) {
                     longestFound = max(longestFound, length);
                 }
             }
