@@ -15,12 +15,14 @@ Initial Thoughts:
 For this i think i can start counting up from (1 x area), then (2 x area-1) until i reach area/2, going past that would only create duplicates. I should also check at each iteration if both values are even, and if they
 are then i just skip to the next. I will implement this first and see if i need to make any changes from there.
 
-
 Reflections:
 Another simple one, but i am coming up with the solutions faster and feeling more confident in coding them since week 1 so im feeling good about my progress. 
 
+
 Problem 3 - TimeTravellingCellar
 Initial Thoughts:
+This one seemed pretty interesting. There are a few simple rules i can follow while iteratively searching through a nested loop of profit[i] and decay[j]. In this totalProft will equal profit[i] - decay[j]. 
+Also since i cannot advance and decay in the same cellar, i cannot equal j so i can just skip this iteration when i encounter it. Using this method i can just store and dynamically update a bestProfit value.
 
 Reflections:
 
