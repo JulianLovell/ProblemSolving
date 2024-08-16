@@ -7,10 +7,14 @@ I think for this one i can create a second temp string, using this, i can iterat
 this temp string alongside the given spell and each time i encounter an A or Z again in the given spell i just replace it with the A or Z but drawing from the back of the temp, or i could reverse temp and just draw from the front.
 
 Reflections:
+This was pretty simple, which would be expected from a warmup question to be fair.
 
 
 Problem 2 - RugSizes
 Initial Thoughts:
+For this i think i can start counting up from (1 x area), then (2 x area-1) until i reach area/2, going past that would only create duplicates. I should also check at each iteration if both values are even, and if they
+are then i just skip to the next. I will implement this first and see if i need to make any changes from there.
+
 
 Reflections:
 
