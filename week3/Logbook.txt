@@ -52,3 +52,5 @@ For this i pressume i can just iteratively try each arrangement of the digits, c
 to do in this implementation.
 
 Reflection:
+That one was a bit easier than the previous. Also i didnt realise that the QuickSums one i had done was the bonus so i have unintentionally done an extra. This problem combined a few ideas from previous ones, such as 
+generating the different possible numbers and then trying different combinations and storing the best one found.
