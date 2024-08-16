@@ -1,0 +1,27 @@
+JULIAN'S LOGBOOK
+
+
+Problem 1 - MagicSpell
+Initial Thoughts: 
+I think for this one i can create a second temp string, using this, i can iterativley go through the given characters, storing the A and Z's every time i find one and in the order i find them. Then i just iterate through
+this temp string alongside the given spell and each time i encounter an A or Z again in the given spell i just replace it with the A or Z but drawing from the back of the temp, or i could reverse temp and just draw from the front.
+
+Reflections:
+
+
+Problem 2 - RugSizes
+Initial Thoughts:
+
+Reflections:
+
+
+Problem 3 - TimeTravellingCellar
+Initial Thoughts:
+
+Reflections:
+
+
+Problem 4 - MonstersValley2 (Bonus)
+Initial Thoughts:
+
+Reflections:
