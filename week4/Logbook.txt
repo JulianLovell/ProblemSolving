@@ -17,7 +17,7 @@ are then i just skip to the next. I will implement this first and see if i need 
 
 
 Reflections:
-
+Another simple one, but i am coming up with the solutions faster and feeling more confident in coding them since week 1 so im feeling good about my progress. 
 
 Problem 3 - TimeTravellingCellar
 Initial Thoughts:
