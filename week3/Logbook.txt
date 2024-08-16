@@ -48,5 +48,7 @@ My first attempt didn't get full marks, which was definetly expected, however i 
 
 Problem 5 - FewestFactors
 Initial Thoughts:
+For this i pressume i can just iteratively try each arrangement of the digits, checking how many factors they each have and updating a 'fewest' variable each time i find one with more. This seems pretty straight forward
+to do in this implementation.
 
 Reflection:
