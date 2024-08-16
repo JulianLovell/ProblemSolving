@@ -42,7 +42,9 @@ step, reducing to smaller digits as required to make up the next addition. If i 
 
 Reflection:
 I haven't been very confident with recursion from previous classes, however this problem felt like a good opportunity to get some practice. I kept the main ideas from my initial thoughts but implemented it recursively rather than
-using loops like i would have probably tried to do.
+using loops like i would have probably tried to do. I had to do a bit of extra study before attempting this one just to get a better idea of how to properly implement the recursion.
+My first attempt didn't get full marks, which was definetly expected, however i was just glad it ran properly. I added a line to return '-1' if the result was INT_MAX as the failed test case showed i had missed this.
+
 
 Problem 5 - FewestFactors
 Initial Thoughts:
