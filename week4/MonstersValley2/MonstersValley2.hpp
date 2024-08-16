@@ -1,43 +1,47 @@
+#include <climits>
 #include <iostream>
 #include <vector>
-#include <climits>
 
 using namespace std;
 
-class MonstersValley2{
-    public:
-    int minimumPrice(vector<int> dread, vector<int> price){
-        // Party starts with scariness of 0
-        int cheapestParty = INT_MAX;
-        // Dread values could cause overflow on int
-        long long partyDread = 0;
-        int totalCost = 0;
+class MonstersValley2 {
+   public:
+    int minimumPrice(vector<int> dread, vector<int> price) {
+        // Set up n to be dread.size() to make code later easier to write
+        int n = dread.size();
 
-        // Loop through each moster
-        for (int i = 0; i < dread.size(); ++i){
-            // If encountered monster is scarier than current party, then we will always have to buy it
-            if (dread[i] > partyDread){
-                totalCost += price[i];
-                partyDread += dread[i];
-            }
-            
-            // Else we get the choice of buying it or walking past
-            else {
-                // Optional bribe
-                int costIfBribed = totalCost + price[i];
-                long long newPartyDread = partyDread + dread[i];
+        // Set up 2D vector for dynamic solving
+        int rows = n + 1;
+        int columns = 2 * n + 1;
+        vector<long long> initialRow(columns, LLONG_MAX);
+        // Initialize the 2D vector with rows number of initialRow
+        vector<vector<long long>> dreadPrice(rows, initialRow);
 
-                // Compare costs of bribe vs skip
-                if (price[i] == 1){
-                    totalCost += price[i];
-                    partyDread += dread[i];
+        // Starting state: 0 monsters, 0 scariness and 0 cost
+        dreadPrice[0][0] = 0;
+
+        // Loop over each monster
+        for (int i = 0; i < n; ++i) {
+            // Loop over all scariness values
+            for (int s = 0; s <= 2 * n; ++s) {
+                if (dreadPrice[i][s] != LLONG_MAX) {
+                    // Option 1: Bribe the monster
+                    dreadPrice[i + 1][s + dread[i]] = min(dreadPrice[i + 1][s + dread[i]], dreadPrice[i][s] + price[i]);
+
+                    // Option 2: Skip the monster as long as current scariness is high enough
+                    if (s >= dread[i]) {
+                        dreadPrice[i + 1][s] = min(dreadPrice[i + 1][s], dreadPrice[i][s]);
+                    }
                 }
             }
-
-            // Some sort of step to check if totalCost < cheapestParty and updating if needed
-
         }
 
-        return totalCost;
+        // Find the minimum cost to pass all monsters
+        long long result = LLONG_MAX;
+        for (int s = 0; s <= 2 * n; ++s) {
+            result = min(result, dreadPrice[n][s]);
+        }
+
+        return (int)result;
     }
 };
