@@ -25,6 +25,7 @@ This one seemed pretty interesting. There are a few simple rules i can follow wh
 Also since i cannot advance and decay in the same cellar, i cannot equal j so i can just skip this iteration when i encounter it. Using this method i can just store and dynamically update a bestProfit value.
 
 Reflections:
+That problem was pretty simple, i had to take two attempts as i had written in the function call incorrectly, but everything else in the program worked perfectly. 
 
 
 Problem 4 - MonstersValley2 (Bonus)
