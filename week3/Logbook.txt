@@ -1,5 +1,6 @@
 JULIAN'S LOGBOOK
 
+
 Problem 1 - Arrows
 Initial Thoughts:
 Initially i misunderstood the question and thought it was asking to return the number of arrows not just the longest one. 
@@ -27,5 +28,23 @@ Problem 3 - StrangeComputer
 Initial Thoughts:
 I imagine that i can iteration from the largest bit value, so starting from the left, and iterate until i encounter a character that does not match the character in that position of the given memory value. 
 Then i just select that element and the number it should be then update the string to match. Then continue iterating through the updated string. I should also initialise the string to be all 0's.
+
+Reflection:
+Ok i got that on the first attempt too. I have found the 2 star difficulty questions far easier than the 1 star warmup Arrows question. That makes me think that my solution for arrows for far more complicated than 
+necessary. Reflecting on this question, i was able to do it without actually generating any new string and instead just checking the currentbit value to the location in the given memory.
+
+
+Problem 4 - QuickSums
+Initial Thoughts:
+If i am understanding this problem correclty. Then a number that can be used in an addition can be multiple consecutive elements within the string. So if the target number is 24 and the string is 1212, then it would
+be 1 addition (12+12). Using this logic, i think i can iterate through the digits of the string, forming the largest number possible until it exceeds the target value, then i can use the largest number possible at each
+step, reducing to smaller digits as required to make up the next addition. If i reach the end and find it was not possible then i can just return -1 as required.
+
+Reflection:
+I haven't been very confident with recursion from previous classes, however this problem felt like a good opportunity to get some practice. I kept the main ideas from my initial thoughts but implemented it recursively rather than
+using loops like i would have probably tried to do.
+
+Problem 5 - FewestFactors
+Initial Thoughts:
 
 Reflection:
