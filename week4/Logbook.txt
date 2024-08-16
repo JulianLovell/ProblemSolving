@@ -38,3 +38,5 @@ it will be more optimal to bribe a monster who's scariness is only needed later.
 way to solve it but it feels like cheating as using this method means that Manao can see the future.
 
 Reflections:
+My initial submission was more of a brute force strategy where any monster scarier than the current party had to be bought and then any monster of value 1 would be bought. I didnt expect this to work fully but
+wanted to set up the general structure to then be converted to a dynamic solution.
