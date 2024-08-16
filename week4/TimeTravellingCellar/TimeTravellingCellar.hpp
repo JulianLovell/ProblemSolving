@@ -1,15 +1,16 @@
 #include <climits>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 class TimeTravellingCellar {
    public:
-    int determineProfit(int profit[], int decay[]) {
+    int determineProfit(vector<int> profit, vector<int> decay) {
         // Set up best profit variable
         int bestProfit = 0;
         // Max size is 50
-        int n = 50;
+        int n = profit.size();
 
         // For loop using i for proft array and j for decay array
         for (int i = 0; i < n; ++i) {
