@@ -30,5 +30,11 @@ That problem was pretty simple, i had to take two attempts as i had written in t
 
 Problem 4 - MonstersValley2 (Bonus)
 Initial Thoughts:
+For this weeks problems i have actually remembered that the bonus gives 200 marks so this is the last one for this week. I also notice that the killer rabbit has a scariness of 10 which is a reference to Monty Python.
+This problem seems like an optimisation problem as in some scenarios it will be better to just pay of the scaryiest monsters while in others i should try to assemble mutliple first and then just walk past.
+Some conditions to take note of but may or may not need to be directly coded are that if the elements of dread[] progressively grow larger i will need to buy each one, also if the largest value is first then 
+i can just buy the first and not any others. I might start by just implementing it to bribe any monster that exceeds the party's scariness and walk past otherwise, although i presume that there will be cases where 
+it will be more optimal to bribe a monster who's scariness is only needed later. Another idea is that i can solve this dynamically by trying each combination and saving the cheapestParty, i guess this is the correct
+way to solve it but it feels like cheating as using this method means that Manao can see the future.
 
 Reflections:
