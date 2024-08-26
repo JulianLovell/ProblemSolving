@@ -7,10 +7,10 @@ the given factor. I can then just have a counter that will increase with each su
 check.
 
 Troubleshooting:
-
+I got this working on my first attempt so none.
 
 Reflection:
-
+This one was very simple to do and was a good warmup for harder ones.
 
 
 Problem 2 - Barbecue
@@ -46,5 +46,7 @@ After taking a break since the workshop, looking at my current code again i am s
 if the input is too long. These were straight forward to sort out. 
 After this first proper attempt, the main issue is that i am not checking for 'multiplyers' of greater than 9 (more than 1 digit long). This should be fixable by just accumulating digits for multi by multiplying it by '10' and 
 then addint the interger value of the current digit.
+Everything is mostly passing now except i am failing on the test case "9999999999999999999999999999999999999999999999999X", i am assuming this is due to an overflow issue. I should be able to fix this by just having 
+an earlier '>50' check, to return TOO LONG before we run into the overflow.
 
 Reflection:

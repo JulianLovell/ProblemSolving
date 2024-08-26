@@ -13,12 +13,18 @@ public:
         int i = 0;
 
         while (i < n) {
-            int multi = 0;
+            long long multi = 0;
 
             // Accumulate multi-digit numbers
             while (i < n && isdigit(text[i])) {
                 // Convert char to int and accumulate
-                multi = multi * 10 + (text[i] - '0');  
+                multi = multi * 10 + (text[i] - '0'); 
+
+                // Early check: if the multiplier gets too large, return "TOO LONG"
+                if (multi > 50) {
+                    return "TOO LONG";
+                }
+
                 ++i;
             }
 
@@ -29,14 +35,11 @@ public:
 
             // Append the character 'multi' times
             if (i < n && isalpha(text[i])) {
-                for (int j = 0; j < multi; ++j) {
-                    newString.push_back(text[i]);
-
-                    // Check if the length exceeds 50 characters
-                    if (newString.size() > 50) {
-                        return "TOO LONG";
-                    }
+                if (newString.size() + multi > 50) {
+                    return "TOO LONG";
                 }
+
+                newString.append(multi, text[i]);
             }
 
             // Move to next character
