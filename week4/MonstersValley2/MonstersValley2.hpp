@@ -7,40 +7,31 @@ using namespace std;
 class MonstersValley2 {
 public:
     int minimumPrice(vector<int> dread, vector<int> price) {
-        int n = dread.size();  // Number of monsters
+        // Number of monsters
+        int n = dread.size();
+        // Start from the first monster
+        return monstersMethod(dread, price, 0, 0, 0, n);
+    }
 
-        // Create a 2D vector to store the minimum cost for reaching a certain amount of scariness
-        // Maximum scariness we can achieve
-        int maxScariness = 2 * n;
-        vector<vector<long long>> dreadPrice(n + 1, vector<long long>(maxScariness + 1, LLONG_MAX));
-
-        // Start with no monsters bribed, no scariness, and 0 cost
-        dreadPrice[0][0] = 0;
-
-        // Loop over each monster
-        for (int i = 0; i < n; ++i) {
-            for (int s = 0; s <= maxScariness; ++s) {
-                if (dreadPrice[i][s] != LLONG_MAX) {
-                    // Option 1: Bribe the current monster, increasing scariness and cost
-                    if (s + dread[i] <= maxScariness) {
-                        dreadPrice[i + 1][s + dread[i]] = min(dreadPrice[i + 1][s + dread[i]], dreadPrice[i][s] + price[i]);
-                    }
-
-                    // Option 2: Skip the current monster, only if current scariness is enough to skip
-                    if (s >= dread[i]) {
-                        dreadPrice[i + 1][s] = min(dreadPrice[i + 1][s], dreadPrice[i][s]);
-                    }
-                }
-            }
+    // Method to explore all possible combinations
+    int monstersMethod(const vector<int>& dread, const vector<int>& price, int index, long long partyDread, int totalCost, int n) {
+        // If we have passed all monsters, return the total cost
+        if (index == n) {
+            return totalCost;
         }
 
-        // Find the minimum cost to pass all monsters
-        long long result = LLONG_MAX;
-        for (int s = 0; s <= maxScariness; ++s) {
-            result = min(result, dreadPrice[n][s]);
+        int minCost = INT_MAX;
+
+        // Option 1: Bribe the current monster
+        int bribeCost = totalCost + price[index];
+        long long newPartyDread = partyDread + dread[index];
+        minCost = min(minCost, monstersMethod(dread, price, index + 1, newPartyDread, bribeCost, n));
+
+        // Option 2: Skip the current monster, but only if it's safe to do so
+        if (partyDread >= dread[index]) {
+            minCost = min(minCost, monstersMethod(dread, price, index + 1, partyDread, totalCost, n));
         }
 
-        // If result is still LLONG_MAX, return -1
-        return (result == LLONG_MAX) ? -1 : (int)result;
+        return minCost;
     }
 };
