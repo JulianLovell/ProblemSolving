@@ -22,8 +22,9 @@ get voted for. The only thing left to solve after that would be the cases where 
 eliminate whoever has voted the most. 
 
 Troubleshooting:
-My thoughts for the counter cannot work in the way i intended to use it. While troubleshooting 
-i thought of a new approach where i can just iterate 
+I started this one in the workshop and while my thought process was somewhat right. After sitting down to do it at home there is a lot to change. I can keep the idea of the lists storing the number of votes against a person
+and the number of times theyve voted, however this should be done across two different vectors. I have re-written a lot of it, solving the problem by playing around with the contents of these lists and performing checks
+only when necessary such as only checking the nubmer of times someone has voted in the case that there is a tie. 
 
 Reflection:
 
@@ -50,3 +51,5 @@ Everything is mostly passing now except i am failing on the test case "999999999
 an earlier '>50' check, to return TOO LONG before we run into the overflow.
 
 Reflection:
+After the overflow fix it passed 100%. This problem took a few fixes/attempts however my inital thought process and solution was largely what i finished with. I am happy with that as it means i am improving at 
+being able to identify the solutions from the start, now i just need to make sure my coding ability can match my thinking.
