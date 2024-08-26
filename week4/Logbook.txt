@@ -40,4 +40,6 @@ way to solve it but it feels like cheating as using this method means that Manao
 Reflections:
 My initial submission was more of a brute force strategy where any monster scarier than the current party had to be bought and then any monster of value 1 would be bought. I didnt expect this to work fully but
 wanted to set up the general structure to then be converted to a dynamic solution.
-For some reason now after the first implenetation where it was graded, my updated version is no longer even being read by gradescope so i am not sure what is going on with the files here.
+For some reason now after the first implenetation where it was graded, my updated version is no longer even being tested by gradescope so i am not sure what is going on with the files here. After testing by commenting
+out different sections of the code, it seems that gradescope is not 'loading' it to test for some reason. I will keep troubleshooting but it only started doing this in the more recent versions of my code which means 
+it isnt to do will filepath naming or function call. I am very confused as ive never seen gradescope behave like this so i think i will just re-write the code using similar logic and see if that fixes the issue.
