@@ -43,3 +43,7 @@ wanted to set up the general structure to then be converted to a dynamic solutio
 For some reason now after the first implenetation where it was graded, my updated version is no longer even being tested by gradescope so i am not sure what is going on with the files here. After testing by commenting
 out different sections of the code, it seems that gradescope is not 'loading' it to test for some reason. I will keep troubleshooting but it only started doing this in the more recent versions of my code which means 
 it isnt to do will filepath naming or function call. I am very confused as ive never seen gradescope behave like this so i think i will just re-write the code using similar logic and see if that fixes the issue.
+This has fixed the issue but now i am back to just troubleshooting normal issues to get it to pass the test cases. Im having some issues getting this to work using my dynamic programming approach that i wanted to get some practice with.
+After troubleshooting the gradescope issues for so long i just want to get this working and think i will revert to a more brute force style approach where i will try every possible team combination and just return the best found.
+That was far easier and i got it working quickly. I am disappointed i couldn't get my dynamic approach to work as it would have been good practice and more effient, however switching to a recursive/brute force 
+style approach did work and was easier to do.
