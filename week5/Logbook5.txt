@@ -1,0 +1,46 @@
+JULIAN'S LOGBOOK
+
+Problem 1 - Multiples
+Design Ideas:
+I can just iterate through running a check on each number if it is divisible by 
+the given factor. I can then just have a counter that will increase with each successful
+check.
+
+Troubleshooting:
+
+
+Reflection:
+
+
+
+Problem 2 - Barbecue
+Design Ideas:
+Since voter[i] and excluded[i] correlate, i can use a single for loop with both just referencing i.
+I don't see any situation where i will need to read voter[i] at the same time as a different value for excluded.
+I could probably solve this by setting up a vector like 'vector<int> count(n, 0) and just count how many times each person (index)
+get voted for. The only thing left to solve after that would be the cases where it is tied and i need to
+eliminate whoever has voted the most. 
+
+Troubleshooting:
+My thoughts for the counter cannot work in the way i intended to use it. While troubleshooting 
+i thought of a new approach where i can just iterate 
+
+Reflection:
+
+
+
+Problem 3 - RunLengthEncoding
+Design Ideas:
+I feel like i can solve this using a single loop. I can iterate through the string,
+each time i get to a number i can update a variable called 'multiplyer', then at
+the character after i can just print it into a new string 'multiplyer' times. Afterwards
+i just return the new string. Then to account for letters without a number in front,
+after each print to the new string i can set 'multiplyer' back to 0.
+
+Troubleshooting:
+On the first implementation, i was also putting the numbers into the string. This should simple to fix just by using an else statement
+after the isdigit() check. Meaning that only things that are't a digit get printed to the new string.
+The next issue is that i am not multiplying the number of times elements are being printed. I think this is because i am not converting
+the element to an integer, the stoi function should fix this.
+
+Reflection:
