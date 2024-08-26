@@ -41,6 +41,8 @@ Troubleshooting:
 On the first implementation, i was also putting the numbers into the string. This should simple to fix just by using an else statement
 after the isdigit() check. Meaning that only things that are't a digit get printed to the new string.
 The next issue is that i am not multiplying the number of times elements are being printed. I think this is because i am not converting
-the element to an integer, the stoi function should fix this.
+the element to an integer, the stoi function should fix this. 
+After taking a break since the workshop, looking at my current code again i am seeing some issues. These are my use of the 'stoi' function which won't work in the way i am using it, and i am also not yet checking
+if the input is too long. These were straight forward to sort out.
 
 Reflection:
