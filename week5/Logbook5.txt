@@ -43,6 +43,8 @@ after the isdigit() check. Meaning that only things that are't a digit get print
 The next issue is that i am not multiplying the number of times elements are being printed. I think this is because i am not converting
 the element to an integer, the stoi function should fix this. 
 After taking a break since the workshop, looking at my current code again i am seeing some issues. These are my use of the 'stoi' function which won't work in the way i am using it, and i am also not yet checking
-if the input is too long. These were straight forward to sort out.
+if the input is too long. These were straight forward to sort out. 
+After this first proper attempt, the main issue is that i am not checking for 'multiplyers' of greater than 9 (more than 1 digit long). This should be fixable by just accumulating digits for multi by multiplying it by '10' and 
+then addint the interger value of the current digit.
 
 Reflection:

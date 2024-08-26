@@ -15,13 +15,15 @@ public:
         while (i < n) {
             int multi = 0;
 
-            // Check if the current character is a digit
-            if (isdigit(text[i])) {
-                // Concert char to int
-                multi = text[i] - '0';
+            // Accumulate multi-digit numbers
+            while (i < n && isdigit(text[i])) {
+                // Convert char to int and accumulate
+                multi = multi * 10 + (text[i] - '0');  
                 ++i;
-            } else {
-                // If no number is found, default multiplier to 1
+            }
+
+            // If no number is found before a letter, assume a single occurrence
+            if (multi == 0) {
                 multi = 1;
             }
 
