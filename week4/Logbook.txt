@@ -40,3 +40,4 @@ way to solve it but it feels like cheating as using this method means that Manao
 Reflections:
 My initial submission was more of a brute force strategy where any monster scarier than the current party had to be bought and then any monster of value 1 would be bought. I didnt expect this to work fully but
 wanted to set up the general structure to then be converted to a dynamic solution.
+For some reason now after the first implenetation where it was graded, my updated version is no longer even being read by gradescope so i am not sure what is going on with the files here.
