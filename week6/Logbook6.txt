@@ -17,5 +17,7 @@ possible colour for the starting card, and then just return the minimum counted 
 and maybe there is some sort of connection where if there are already more white than black cards it is more efficient to start with white. However i will stick with my initial thought process. 
 
 Troubleshooting:
+My first implementation didn't account for the first card being incorrect for the optimal solution, however i just wanted to make sure my loop logic was correct. 
+I also spelt solitiare wrong every time i wrote it which wasn't very helpful and caused the compile to fail.
 
 Reflection:
