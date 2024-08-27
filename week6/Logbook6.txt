@@ -10,6 +10,11 @@ Reflection:
 
 Problem 2 - BlackAndWhiteSolitaire
 Design Ideas:
+This one seems pretty straightforward, i can just us a for loop and iterate through the given string, i can then have a counter variable to track how many cards are flipped and then a variable within the string 
+tracking the colour of the current/previous card. I if the current matches the previous i will ++counter and iterate to the next, setting the previous value to the correct colour. The only situation where this wouldn't
+work i imagine, is a case where the optimal number of flips requires the first to be flipped instead of starting the pattern from there. A lazy solution to this can be to just do this whole thing twice, once for each
+possible colour for the starting card, and then just return the minimum counted variable out of the two. Another solution could be doing something like counting through how many black/white cards there already are
+and maybe there is some sort of connection where if there are already more white than black cards it is more efficient to start with white. However i will stick with my initial thought process. 
 
 Troubleshooting:
 
