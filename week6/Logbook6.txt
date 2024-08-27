@@ -1,0 +1,16 @@
+JULIAN'S LOGBOOK
+
+Problem 1 - GoodHours
+Design Ideas:
+
+Troubleshooting:
+
+Reflection:
+
+
+Problem 2 - BlackAndWhiteSolitaire
+Design Ideas:
+
+Troubleshooting:
+
+Reflection:
