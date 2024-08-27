@@ -1,35 +1,50 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-class BlackAndWhiteSolitiare {
-    public:
-
-    int minimumTurns(string cardFront){
-        // Initialise size for readabilitiy and flips to track number of flipped cards
+class BlackAndWhiteSolitaire {
+public:
+    int minimumTurns(string cardFront) {
         int size = cardFront.size();
-        int flips = 0;
-
-        // Initialise starting card
-        char prevCard = cardFront[0];
-
-        // For loop to do whole process
-        for (int i = 1; i < size; ++i){
-            // Set current card
-            char currentCard = cardFront[i];
-
-            // Compare current to previous, if they don't follow pattern then correct and add to counter
-            if (currentCard == prevCard){
-                if (currentCard == 'B'){
-                    currentCard = 'W';
-                } else {
-                    currentCard = 'B';
-                }
-
-                ++flips;
+        
+        // Case 1: Starting with B
+        int flipsPattern1 = 0;
+        // Start with B
+        char expected = 'B';
+        
+        for (int i = 0; i < size; ++i) {
+            // Check if the current card is in the wrong spot for this pattern
+            if (cardFront[i] != expected) {
+                flipsPattern1++;
+            }
+            // Flip expected value for the next position
+            if (expected == 'B') {
+                expected = 'W';
+            } else {
+                expected = 'B';
             }
         }
 
-        return flips;
+        // Case 2: Starting with W
+        int flipsPattern2 = 0;
+        // Start with W
+        expected = 'W';
+        
+        for (int i = 0; i < size; ++i) {
+            // Check if the current card is in the wrong spot for this pattern
+            if (cardFront[i] != expected) {
+                flipsPattern2++;
+            }
+            // Flip expected value for the next position
+            if (expected == 'W') {
+                expected = 'B';
+            } else {
+                expected = 'W';
+            }
+        }
+
+        // Return the minimum number of flips required
+        return min(flipsPattern1, flipsPattern2);
     }
 };
