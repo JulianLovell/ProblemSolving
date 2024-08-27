@@ -24,10 +24,11 @@ eliminate whoever has voted the most.
 Troubleshooting:
 I started this one in the workshop and while my thought process was somewhat right. After sitting down to do it at home there is a lot to change. I can keep the idea of the lists storing the number of votes against a person
 and the number of times theyve voted, however this should be done across two different vectors. I have re-written a lot of it, solving the problem by playing around with the contents of these lists and performing checks
-only when necessary such as only checking the nubmer of times someone has voted in the case that there is a tie. 
+only when necessary such as only checking the number of times someone has voted in the case that there is a tie. 
 
 Reflection:
-
+I actually found this one a bit more difficult than problem 3 (which i finished first). I think this is because while my ideas did work in the end, i found the implementation of them a bit more difficult. I did expect this
+to be the case based on how i solved it but wanted to get some more practice using vectors to solve a problem in the way i have here.
 
 
 Problem 3 - RunLengthEncoding
@@ -53,3 +54,17 @@ an earlier '>50' check, to return TOO LONG before we run into the overflow.
 Reflection:
 After the overflow fix it passed 100%. This problem took a few fixes/attempts however my inital thought process and solution was largely what i finished with. I am happy with that as it means i am improving at 
 being able to identify the solutions from the start, now i just need to make sure my coding ability can match my thinking.
+
+
+Problem 4 - RGBStreet
+Design Ideas:
+I think i could use a brute force approach again for this one, however i will take another opportunity to get practice with dynamic programming again, and hopefully find the solution this way rather than changing like the previous.
+I can create a DP table tracking house index and colour, and storing the minimum cost to paint a house with a colour.
+
+Troubleshooting:
+While writing up my initial implementation, i decided to use stringstream which is a library which i dont remember ever using, or at least not in this class so far. It made sense to use for this problem as it could 
+help with parsing in the different costs due to how the input is given. I think this will work, but if not it will be a good library to get some practice with as it will probably be very useful to be comfortable using.
+
+Reflection:
+I was actually able to get this one working first time, i think this was largely due to the practice i got with the previous question, and here i was able to implement the dynamic programming approach in a far cleaner and more understandable
+way as i wasn't as confused along the way of writing it, which i think got me even more mixed up when trying to do it before. I'm still not 100% comfortable with writing dynamic programming solutions so will look for more in future questions.
