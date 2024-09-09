@@ -50,9 +50,8 @@ public:
 
                 // If we reach 3 possible consecutive vowels or 5 possible consecutive consonants, it may be UGLY
                 if (vowelCountMax >= 3 || consonantCountMax >= 5) {
-                    bool uglyForBoth = (vowelCountMax >= 3) && (consonantCountMax >= 5);
                     // Guaranteed ugly if both conditions are met
-                    if (uglyForBoth) return "UGLY";
+                    if (vowelCountMax >= 3 && consonantCountMax >= 5) return "UGLY";
                     possibleUgly = true;
                 }
 
