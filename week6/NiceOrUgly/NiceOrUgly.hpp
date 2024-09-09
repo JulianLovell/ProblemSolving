@@ -11,9 +11,9 @@ public:
 
     string describe(string s) {
         int n = s.length();
-        // Trakcks if it can be ugly
+        // Tracks if it can be ugly
         bool possibleUgly = false;
-        // Tracks if it is definetly nice
+        // Tracks if it is definitely nice
         bool definitelyNice = true;
 
         for (int i = 0; i < n; i++) {
@@ -51,11 +51,17 @@ public:
                 }
 
                 // If we reach 3 possible consecutive vowels or 5 possible consecutive consonants, it may be UGLY
-                if (vowelCountMax >= 3 || consonantCountMax >= 5) possibleUgly = true;
+                if (vowelCountMax >= 3 || consonantCountMax >= 5) {
+                    // Check if replacing ? with both vowel and consonant still makes it ugly
+                    bool uglyForBoth = vowelCountMax >= 3 && consonantCountMax >= 5;
+                    // If both conditions are met, it's definitely ugly
+                    if (uglyForBoth) return "UGLY";
+                    possibleUgly = true;
+                }
 
-                // If we reach 3 definite consecutive vowels, its definitely ugly
+                // If we reach 3 definite consecutive vowels, it's definitely ugly
                 if (vowelCountMin >= 3) return "UGLY";
-                // If we reach 5 definite consecutive consonants, its definitely ugly
+                // If we reach 5 definite consecutive consonants, it's definitely ugly
                 if (consonantCountMin >= 5) return "UGLY";
             }
         }
