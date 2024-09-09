@@ -71,5 +71,11 @@ Troubleshooting:
 Ive set this up using a lot of bool checks, i dont use them much and they fit here. This is also a good opportunity to use different functions as i mentioned in one of my reflections from a previous problem.
 Hopefully i can get it working this way.
 I got 62/100 on my first attempt, but i can see why. I am not properly handling cases where there are multiple ? like '?????'. I need to track all possibilities of the sequnces of ? without making a hard decision too early.
+My code was getting pretty messy and confusing and i still couldnt figure out the fix, so i decided to just start fresh.
+
+New design ideas:
+My initial approach was too fixed, which was clear when dealing with multiple ? characters. I was also deciding whether the string was "UGLY" or "NICE" without fully exploring all possibilities, 
+which is why cases like ????? werent handled correctly. My plan for the new version should fix this this by tracking both the a 'minimum' and 'maximum' possible consecutive vowels/consonants in a single pass. 
+Which should detect definite "UGLY" cases early and then correctly return "42" when both outcomes are possible, without making a hard decision too soon.
 
 Reflection:

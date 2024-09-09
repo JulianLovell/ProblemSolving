@@ -1,77 +1,71 @@
-#include <iostream>
 #include <string>
 
 using namespace std;
 
 class NiceOrUgly {
 public:
+    // Helper function from previous version
+    bool isVowel(char c) {
+        return c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
+    }
+
     string describe(string s) {
-        int n = s.size();
-        bool couldBeUgly = false, couldBeNice = false;
+        int n = s.length();
+        // Trakcks if it can be ugly
+        bool possibleUgly = false;
+        // Tracks if it is definetly nice
+        bool definitelyNice = true;
 
-        // Check options for the '?' being either a vowel or a consonant
-        for (int mode = 0; mode < 2; ++mode) {
-            int vowels = 0, consonants = 0;
-            bool definitelyUgly = false;
+        for (int i = 0; i < n; i++) {
+            int vowelCountMin = 0;
+            int vowelCountMax = 0;
+            int consonantCountMin = 0;
+            int consonantCountMax = 0;
 
-            for (int i = 0; i < n; ++i) {
-                char ch = s[i];
+            // Go through substring of up to 5 characters since the max condition is 5 consonants
+            for (int j = i; j < n && j < i + 5; j++) {
+                char c = s[j];
 
-                // Check for ?
-                if (ch == '?') {
-                    if (mode == 0) {
-                        // Treat ? as a vowel
-                        vowels++;
-                        consonants = 0;
-                    } else {
-                        // Treat ? as a consonant
-                        consonants++;
-                        vowels = 0;
-                    }
-                } else if (isVowel(ch)) {
-                    // Vowel found
-                    vowels++;
-                    consonants = 0;
-                } else if (isConsonant(ch)) {
-                    // Consonant found
-                    consonants++;
-                    vowels = 0;
+                // '?' can be either vowel or consonant, so need to handle both possibilities
+                if (c == '?') {
+                    // It can be a vowel
+                    vowelCountMax++;
+                    // It can be a consonant
+                    consonantCountMax++;
+                    // If it is a consonant, then reset the min vowel count
+                    vowelCountMin = max(0, vowelCountMin - 1);
+                    // If it is a vowel, then reset the min consonant count
+                    consonantCountMin = max(0, consonantCountMin - 1);
+                } else if (isVowel(c)) {
+                    // If it's a vowel, increase the vowel counters and reset consonant counters
+                    vowelCountMax++;
+                    vowelCountMin++;
+                    consonantCountMax = 0;
+                    consonantCountMin = 0;
+                } else {
+                    // If it's a consonant, increase the consonant counters and reset vowel counters
+                    consonantCountMax++;
+                    consonantCountMin++;
+                    vowelCountMax = 0;
+                    vowelCountMin = 0;
                 }
 
-                // Check for the UGLY condition
-                if (vowels >= 3 || consonants >= 5) {
-                    definitelyUgly = true;
-                    break;
-                }
-            }
+                // If we reach 3 possible consecutive vowels or 5 possible consecutive consonants, it may be UGLY
+                if (vowelCountMax >= 3 || consonantCountMax >= 5) possibleUgly = true;
 
-            if (!definitelyUgly) {
-                couldBeNice = true;
-            } else {
-                couldBeUgly = true;
+                // If we reach 3 definite consecutive vowels, its definitely ugly
+                if (vowelCountMin >= 3) return "UGLY";
+                // If we reach 5 definite consecutive consonants, its definitely ugly
+                if (consonantCountMin >= 5) return "UGLY";
             }
         }
 
-        if (couldBeUgly && couldBeNice) {
-            // Can be either ugly or nice
+        // If it can be both UGLY and NICE, return "42"
+        if (possibleUgly) {
             return "42";
-        } else if (couldBeUgly) {
-            // Always ugly
-            return "UGLY";
-        } else {
-            // Always nice
-            return "NICE";
         }
-    }
 
-    // Function to check if a character is a vowel
-    bool isVowel(char ch) {
-        return ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U';
-    }
-
-    // Function to check if a character is a consonant
-    bool isConsonant(char ch) {
-        // If it is not a vowel but must still be a letter
-        return !isVowel(ch) && ch >= 'A' && ch <= 'Z';
+        // If none of the above, then it must be NICE
+        return "NICE";
     }
 };
