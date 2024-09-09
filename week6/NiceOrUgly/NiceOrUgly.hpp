@@ -53,45 +53,70 @@ public:
                     return "UGLY";
                 }
             }
-
-            // Check if both min and max indicate ugly 
-            if (possibleUgly && !guaranteedUgly) {
-                guaranteedUgly = true;
-            }
         }
 
         // If no definite ugly case is found, but possible ugly exists due to '?'
         if (possibleUgly) {
-            // If '?' exists and replacements could lead to different outcomes, return "42"
+            // Check two scenarios: when '?' is replaced by vowel and consonant
+            bool canBeNice = false;
+            bool canBeUgly = false;
+
             for (int i = 0; i < n; i++) {
                 if (s[i] == '?') {
-                    // Check two scenarios: when '?' is replaced by vowel and consonant
-                    bool canBeNice = false;
-                    bool canBeUgly = false;
+                    // Try replacing '?' with a vowel and consonant in the local context
+                    string sVowel = s;
+                    string sConsonant = s;
 
-                    // Replace '?' with a vowel and consonant
-                    for (char replacement : {'A', 'B'}) {
-                        string testStr = s;
-                        testStr[i] = replacement;
-                        string result = describe(testStr);
-                        if (result == "NICE") canBeNice = true;
-                        if (result == "UGLY") canBeUgly = true;
+                    // Replace '?' with a vowel ('A')
+                    sVowel[i] = 'A';
+                    if (describeHelper(sVowel) == "NICE") {
+                        canBeNice = true;
                     }
 
-                    // If both replacements lead to UGLY, return UGLY
+                    // Replace '?' with a consonant ('B')
+                    sConsonant[i] = 'B';
+                    if (describeHelper(sConsonant) == "UGLY") {
+                        canBeUgly = true;
+                    }
+
                     if (canBeUgly && !canBeNice) {
                         return "UGLY";
                     }
 
-                    // If '?' can lead to both outcomes, return "42"
-                    return "42";
+                    if (canBeNice && canBeUgly) {
+                        return "42";
+                    }
                 }
             }
-            // No '?', so it's definitely ugly
+
+            // If no more '?' but still possible ugly, return UGLY
             return "UGLY";
         }
 
-        // If no definite ugly found, return NICE
+        // If none of the above, return NICE
+        return "NICE";
+    }
+
+    // Helper function to handle '?'
+    string describeHelper(string s) {
+        int n = s.length();
+        for (int i = 0; i < n; i++) {
+            int vowelCount = 0, consonantCount = 0;
+
+            for (int j = i; j < n && j < i + 5; j++) {
+                char c = s[j];
+                if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+                    vowelCount++;
+                    consonantCount = 0;
+                } else {
+                    consonantCount++;
+                    vowelCount = 0;
+                }
+
+                if (vowelCount >= 3) return "UGLY";
+                if (consonantCount >= 5) return "UGLY";
+            }
+        }
         return "NICE";
     }
 };
