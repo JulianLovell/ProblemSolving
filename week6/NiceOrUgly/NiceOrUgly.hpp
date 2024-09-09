@@ -62,13 +62,20 @@ public:
 
         // If it can be both UGLY and NICE, return "42"
         if (possibleUgly) {
-            // Added loop to check for amgibuous cases
+            bool amb = false;
+
             for (int i = 0; i < n; i++) {
                 if (s[i] == '?') {
-                    return "42";
+                    amb = true;
+                    break;
                 }
             }
-            return "UGLY";
+
+            // If there's no ambiguity, return "UGLY"
+            if (!amb) return "UGLY";
+            
+            // If there is, return 42
+            return "42";
         }
 
         // If none of the above, then it must be NICE
