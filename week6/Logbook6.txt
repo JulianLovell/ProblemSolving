@@ -1,11 +1,21 @@
 JULIAN'S LOGBOOK
 
 Problem 1 - GoodHours
-Design Ideas:
+Design Ideas: 
+This one took me a little while to fully think through, but it seems easy enough. 
+I can loop through every minute between beforeTime and afterTime, after converting the times into minutes since midnight for easier iterations. 
+For each minute, we just extract the digits from hours and minutes and check if the time is good by trying three different splits of the digits like hours and minutes. 
+If any split results in equal products, it therefore counts as a good time.
+
+I can handle a case where afterTime is earlier than beforeTime by adding 24 hours to afterTime. 
+And like other questions i will keep a counter for good times and return the count at the end.
 
 Troubleshooting:
+Had no issues with the first implementation. I expected this to work as a spent a bit longer brainstorming the problem. Was fairly simple to do.
 
 Reflection:
+My code definetly wasn't optimised and i could have used seperate functions to write this better, however in this class i prefer to try to keep everything in the one function just because i find it a bit easier to read
+through/ debug.
 
 
 Problem 2 - BlackAndWhiteSolitaire
@@ -25,3 +35,14 @@ That implementation also didn't compile as i have now realised when correcting t
 Reflection:
 My first proper attempt passed the first time, however it took more tries than it should have. Ive learned from this that i need to be way more careful in writing out the function and file names. Taking a lazy approach from the start, while my code was fine,
 led to me making unnecessary issues elsewhere, which is a mistake i made in prac exam 1 as well.
+
+
+Problem 3 - ColorfulRabbits
+Design Ideas:
+
+Troubleshooting:
+
+Reflection:
+
+
+Problem 4 - NiceOrUgly (BONUS)
