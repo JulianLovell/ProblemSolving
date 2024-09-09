@@ -1,5 +1,4 @@
 #include <string>
-
 using namespace std;
 
 class NiceOrUgly {
@@ -11,70 +10,58 @@ public:
 
     string describe(string s) {
         int n = s.length();
-        // Tracks if it can be ugly
         bool possibleUgly = false;
 
         for (int i = 0; i < n; i++) {
-            int vowelCountMin = 0;
-            int vowelCountMax = 0;
-            int consonantCountMin = 0;
-            int consonantCountMax = 0;
+            int vowelCountMin = 0, vowelCountMax = 0;
+            int consonantCountMin = 0, consonantCountMax = 0;
 
-            // Go through substring of up to 5 characters since the max condition is 5 consonants
+            // Check substring of up to 5 characters since max condition is 5 consonants
             for (int j = i; j < n && j < i + 5; j++) {
                 char c = s[j];
 
-                // '?' can be either vowel or consonant, so need to handle both possibilities
                 if (c == '?') {
-                    // It can be a vowel
+                    // '?' can be both vowel and consonant
                     vowelCountMax++;
-                    // It can be a consonant
                     consonantCountMax++;
-                    // If it is a consonant, then reset the min vowel count
+                    // Resetting the min counts since we don't know if it's a vowel or consonant
                     vowelCountMin = max(0, vowelCountMin - 1);
-                    // If it is a vowel, then reset the min consonant count
                     consonantCountMin = max(0, consonantCountMin - 1);
                 } else if (isVowel(c)) {
-                    // If it's a vowel, increase the vowel counters and reset consonant counters
+                    // It's a definite vowel
                     vowelCountMax++;
                     vowelCountMin++;
                     consonantCountMax = 0;
                     consonantCountMin = 0;
                 } else {
-                    // If it's a consonant, increase the consonant counters and reset vowel counters
+                    // It's a definite consonant
                     consonantCountMax++;
                     consonantCountMin++;
                     vowelCountMax = 0;
                     vowelCountMin = 0;
                 }
 
-                // If we reach 3 possible consecutive vowels or 5 possible consecutive consonants, it may be UGLY
+                // Check if the max (possible) count makes it definitely ugly
                 if (vowelCountMax >= 3 || consonantCountMax >= 5) {
-                    // Guaranteed ugly if both conditions are met
-                    if (vowelCountMax >= 3 && consonantCountMax >= 5) return "UGLY";
-                    possibleUgly = true;
+                    return "UGLY";
                 }
 
-                // If we reach 3 definite consecutive vowels, it's definitely ugly
-                if (vowelCountMin >= 3) return "UGLY";
-                // If we reach 5 definite consecutive consonants, it's definitely ugly
-                if (consonantCountMin >= 5) return "UGLY";
+                // Check if the definite (min) count makes it definitely ugly
+                if (vowelCountMin >= 3 || consonantCountMin >= 5) {
+                    return "UGLY";
+                }
             }
         }
 
-        // If it can be both UGLY and NICE, return "42"
-        if (possibleUgly) {
-            // Check if there is any remaining ambiguity with '?'
-            for (int i = 0; i < n; i++) {
-                if (s[i] == '?') {
-                    return "42";
-                }
+        // If no definite ugly case is found, check if it's ambiguous
+        for (int i = 0; i < n; i++) {
+            if (s[i] == '?') {
+                // If there are still question marks, it can be either NICE or UGLY
+                return "42";
             }
-            // If no ambiguity remains, it's ugly
-            return "UGLY";
         }
 
-        // If none of the above, then it must be NICE
+        // If it's neither ugly nor ambiguous, it must be NICE
         return "NICE";
     }
 };
