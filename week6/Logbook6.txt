@@ -51,6 +51,24 @@ For some reason it is not being graded in gradescope despite having the right fi
 mentioning it but that didn't work either. Last time i got this issue it was related to the filpath so ill just have to keep trying a few things. I'm an idiot and had them outside the week 6 folder...
 
 Reflection:
+Was good to get practice using a map, it is pretty simple to implement but i always blank when actually trying to do so. I will also be more careful with my filepaths in the future because i just wasted time with such a 
+basic issue there.
 
 
 Problem 4 - NiceOrUgly (BONUS)
+Design Ideas:
+I feel like i could just brute force this by making a list of all the vowels and then a list of all the consonants, then just iterating through the string checking each element if it is a 'member' of either group, 
+adding to a vowel or consontants counter if it is and then resetting the counter if it is the other. I can then just immediately break and return UGLY if one of the counters reaches the 3 or 5 limit, otherwise 
+continuing through and returning NICE at the end if not.
+
+I can probably get away with not even having a consonants list and just using an else statment after the vowel check for them. Although there are also symbol characters (?) which were definetly included in the problem for that reason
+so i think i will just be lazy and keep it simple, as i would probably rather do if this were also a prac exam, as there is less to 'get wrong'.
+
+Oh i see, i didn't read the problem correctly and the '?' act as jokers, this complicates it a little bit more than i realised. I guess i just check both possibilities, then also if replacing the ? can resault in both NICE and Ugly
+i can then just return 42.
+
+Troubleshooting:
+Ive set this up using a lot of bool checks, i dont use them much and they fit here. This is also a good opportunity to use different functions as i mentioned in one of my reflections from a previous problem.
+Hopefully i can get it working this way.
+
+Reflection:
