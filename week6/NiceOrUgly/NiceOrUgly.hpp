@@ -13,6 +13,7 @@ public:
     string describe(string s) {
         int n = s.length();
         bool possibleUgly = false;
+        bool definiteUgly = false;
 
         for (int i = 0; i < n; i++) {
             int vowelCountMin = 0, vowelCountMax = 0;
@@ -59,25 +60,10 @@ public:
             bool canBeNice = false;
             bool canBeUgly = false;
 
-            // Now handle consecutive '?' properly
-            int consecutiveQuestionMarks = 0;
+            // Now handle scattered '?' properly across the string
             for (int i = 0; i < n; i++) {
                 if (s[i] == '?') {
-                    consecutiveQuestionMarks++;
-                } else {
-                    consecutiveQuestionMarks = 0;
-                }
-
-                if (consecutiveQuestionMarks >= 3) {
-                    // 3 consecutive '?' can lead to either all vowels (UGLY) or consonants (nice)
-                    return "42";
-                }
-            }
-
-            // Simulate both vowel and consonant replacements
-            for (int i = 0; i < n; i++) {
-                if (s[i] == '?') {
-                    // Try replacing '?' with a vowel and consonant in the local context
+                    // Simulate both vowel and consonant replacements
                     string sVowel = s;
                     string sConsonant = s;
 
@@ -92,15 +78,14 @@ public:
                     if (describeHelper(sConsonant) == "UGLY") {
                         canBeUgly = true;
                     }
-
-                    if (canBeUgly && canBeNice) {
-                        // Ambiguous, both outcomes are possible
-                        return "42";
-                    }
                 }
             }
 
-            // If '?' always makes it ugly, return UGLY, else NICE
+            if (canBeUgly && canBeNice) {
+                // Ambiguous, both outcomes are possible
+                return "42";
+            }
+
             return canBeUgly ? "UGLY" : "NICE";
         }
 
