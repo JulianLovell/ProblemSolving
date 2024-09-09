@@ -4,7 +4,7 @@ using namespace std;
 
 class NiceOrUgly {
 public:
-    // Helper function from previous version
+    // Helper function to check if a character is a vowel
     bool isVowel(char c) {
         return c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
     }
@@ -13,8 +13,6 @@ public:
         int n = s.length();
         // Tracks if it can be ugly
         bool possibleUgly = false;
-        // Tracks if it is definitely nice
-        bool definitelyNice = true;
 
         for (int i = 0; i < n; i++) {
             int vowelCountMin = 0;
@@ -52,9 +50,8 @@ public:
 
                 // If we reach 3 possible consecutive vowels or 5 possible consecutive consonants, it may be UGLY
                 if (vowelCountMax >= 3 || consonantCountMax >= 5) {
-                    // Check if replacing ? with both vowel and consonant still makes it ugly
-                    bool uglyForBoth = vowelCountMax >= 3 && consonantCountMax >= 5;
-                    // If both conditions are met, it's definitely ugly
+                    bool uglyForBoth = (vowelCountMax >= 3) && (consonantCountMax >= 5);
+                    // Guaranteed ugly if both conditions are met
                     if (uglyForBoth) return "UGLY";
                     possibleUgly = true;
                 }
@@ -68,20 +65,14 @@ public:
 
         // If it can be both UGLY and NICE, return "42"
         if (possibleUgly) {
-            bool amb = false;
-
+            // Check if there is any remaining ambiguity with '?'
             for (int i = 0; i < n; i++) {
                 if (s[i] == '?') {
-                    amb = true;
-                    break;
+                    return "42";
                 }
             }
-
-            // If there's no ambiguity, return "UGLY"
-            if (!amb) return "UGLY";
-            
-            // If there is, return 42
-            return "42";
+            // If no ambiguity remains, it's ugly
+            return "UGLY";
         }
 
         // If none of the above, then it must be NICE
