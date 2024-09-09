@@ -47,6 +47,8 @@ Finally, i want to try using a map for this problem because being comfortable us
 Troubleshooting:
 I set up the map correctly, but wasn't sure how to search through it in the loop i set up after. After looking around i got the solution i currently have, i don't fully understand it but if it does work properly
 i will make sure to do a bit more research to get comfortable.
+For some reason it is not being graded in gradescope despite having the right file and path names (i think). I tried renaming it to 'colourful' because maybe the course changed the spelling to the british english version without
+mentioning it but that didn't work either. Last time i got this issue it was related to the filpath so ill just have to keep trying a few things. I'm an idiot and had them outside the week 6 folder...
 
 Reflection:
 
