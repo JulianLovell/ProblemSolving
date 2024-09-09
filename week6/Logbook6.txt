@@ -82,6 +82,6 @@ New Troubleshooting:
 I keep encountering issues, mostly related to how i am handling cases where the output should be UGLY/NICE but i am instead returning 42. I have tried a few different conditional checks and bool statements
 which i thought would fix it but have had no luck so far. I have spent a while on this problem so after taking a break i have come back and will once again take a fresh approach. I tidied it up a bit and changed some tracking/checks
 such as the ongoing UGLY check. I have been making lots of small changes so havent been writing about everything but i did try using recursion to handle the '?', and then when that caused an infinite loop
-i have tried switching to using a helper function to handle it.
+i have tried switching to using a helper function to handle it. With the helper, i got less marks, but got past the main case i was stuck on, so i will take this as a big win and see what i can do to fix the new issues.
 
 Reflection:

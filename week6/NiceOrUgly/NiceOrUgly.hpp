@@ -57,47 +57,42 @@ public:
 
         // If no definite ugly case is found, but possible ugly exists due to '?'
         if (possibleUgly) {
-            // Check two scenarios: when '?' is replaced by vowel and consonant
+            // Handle '?' ambiguity where it could lead to both UGLY and NICE outcomes
             bool canBeNice = false;
             bool canBeUgly = false;
 
             for (int i = 0; i < n; i++) {
                 if (s[i] == '?') {
-                    // Try replacing '?' with a vowel and consonant in the local context
+                    // Simulate both vowel and consonant replacements
                     string sVowel = s;
                     string sConsonant = s;
 
-                    // Replace '?' with a vowel ('A')
+                    // Replace '?' with a vowel ('A') in one string and a consonant ('B') in the other
                     sVowel[i] = 'A';
+                    sConsonant[i] = 'B';
+
                     if (describeHelper(sVowel) == "NICE") {
                         canBeNice = true;
                     }
-
-                    // Replace '?' with a consonant ('B')
-                    sConsonant[i] = 'B';
                     if (describeHelper(sConsonant) == "UGLY") {
                         canBeUgly = true;
                     }
 
-                    if (canBeUgly && !canBeNice) {
-                        return "UGLY";
-                    }
-
-                    if (canBeNice && canBeUgly) {
-                        return "42";
+                    if (canBeUgly && canBeNice) {
+                        return "42";  // Ambiguous, both outcomes are possible
                     }
                 }
             }
 
-            // If no more '?' but still possible ugly, return UGLY
-            return "UGLY";
+            // If '?' always makes it ugly, return UGLY, else NICE
+            return canBeUgly ? "UGLY" : "NICE";
         }
 
         // If none of the above, return NICE
         return "NICE";
     }
 
-    // Helper function to handle '?'
+    // Helper function to avoid recursion and handle '?' locally
     string describeHelper(string s) {
         int n = s.length();
         for (int i = 0; i < n; i++) {
