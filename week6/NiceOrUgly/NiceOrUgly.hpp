@@ -13,7 +13,7 @@ public:
     string describe(string s) {
         int n = s.length();
         bool possibleUgly = false;
-        bool hasQuestionMark = false;
+        bool guaranteedUgly = false;
 
         for (int i = 0; i < n; i++) {
             int vowelCountMin = 0, vowelCountMax = 0;
@@ -25,7 +25,6 @@ public:
 
                 if (c == '?') {
                     // '?' can be either vowel or consonant
-                    hasQuestionMark = true;
                     vowelCountMax++;
                     consonantCountMax++;
                     vowelCountMin = max(0, vowelCountMin - 1);
@@ -49,25 +48,32 @@ public:
                     possibleUgly = true;
                 }
 
-                // If definite min count makes it definitely ugly
+                // If count makes it definitely ugly
                 if (vowelCountMin >= 3 || consonantCountMin >= 5) {
                     return "UGLY";
                 }
+            }
+
+            // Check if both min and max indicate ugly 
+            if (possibleUgly && !guaranteedUgly) {
+                guaranteedUgly = true;
             }
         }
 
         // If no definite ugly case is found, but possible ugly exists due to '?'
         if (possibleUgly) {
-            if (hasQuestionMark) {
-                // Can still be either ugly or nice
-                return "42";
-            } else {
-                // No '?', so it's definitely ugly
-                return "UGLY";
+            // If '?' exists and replacements could lead to different outcomes, return "42"
+            for (int i = 0; i < n; i++) {
+                if (s[i] == '?') {
+                    // Can still be either ugly or nice
+                    return "42";
+                }
             }
+            // No '?', so it's definitely ugly
+            return "UGLY";
         }
 
-        // If none of the above, return NICE
+        // If no definite ugly found, return NICE
         return "NICE";
     }
 };
