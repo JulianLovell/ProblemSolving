@@ -83,5 +83,11 @@ I keep encountering issues, mostly related to how i am handling cases where the 
 which i thought would fix it but have had no luck so far. I have spent a while on this problem so after taking a break i have come back and will once again take a fresh approach. I tidied it up a bit and changed some tracking/checks
 such as the ongoing UGLY check. I have been making lots of small changes so havent been writing about everything but i did try using recursion to handle the '?', and then when that caused an infinite loop
 i have tried switching to using a helper function to handle it. With the helper, i got less marks, but got past the main case i was stuck on, so i will take this as a big win and see what i can do to fix the new issues.
+I am now handling consecutive '???' correctly but new cases are indicating that i am having issues when '?' are spread out throughout the string.
 
 Reflection:
+I give up with this one. I just cannot get it to work. This problem was deceptively complex. Initially, I thought I could solve it with a straightforward brute force approach, 
+iterating through the string and checking for vowels and consonants, while handling the ? characters as wildcards. My original design involved counting consecutive vowels and consonants and resetting the 
+counters as needed, which seemed simple enough. However, the introduction of the wildcard ?, which can represent either a vowel or a consonant, complicated things far more than I anticipated.
+In the end i made so many small tweaks to my solution i dont fully understand what I have written, which is a big issue and likely why i needed to make so many changes with still no working solution. I did learn some things,
+regarding the use of helper functions and using bool statements. Hopefully in future problems i will be able to take what i have learned here and get the solution.
