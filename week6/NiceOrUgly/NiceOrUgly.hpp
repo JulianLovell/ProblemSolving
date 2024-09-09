@@ -62,7 +62,13 @@ public:
 
         // If it can be both UGLY and NICE, return "42"
         if (possibleUgly) {
-            return "42";
+            // Added loop to check for amgibuous cases
+            for (int i = 0; i < n; i++) {
+                if (s[i] == '?') {
+                    return "42";
+                }
+            }
+            return "UGLY";
         }
 
         // If none of the above, then it must be NICE
