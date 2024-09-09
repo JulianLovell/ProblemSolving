@@ -65,7 +65,25 @@ public:
             // If '?' exists and replacements could lead to different outcomes, return "42"
             for (int i = 0; i < n; i++) {
                 if (s[i] == '?') {
-                    // Can still be either ugly or nice
+                    // Check two scenarios: when '?' is replaced by vowel and consonant
+                    bool canBeNice = false;
+                    bool canBeUgly = false;
+
+                    // Replace '?' with a vowel and consonant
+                    for (char replacement : {'A', 'B'}) {
+                        string testStr = s;
+                        testStr[i] = replacement;
+                        string result = describe(testStr);
+                        if (result == "NICE") canBeNice = true;
+                        if (result == "UGLY") canBeUgly = true;
+                    }
+
+                    // If both replacements lead to UGLY, return UGLY
+                    if (canBeUgly && !canBeNice) {
+                        return "UGLY";
+                    }
+
+                    // If '?' can lead to both outcomes, return "42"
                     return "42";
                 }
             }
