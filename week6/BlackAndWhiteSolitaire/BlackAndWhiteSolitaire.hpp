@@ -3,48 +3,75 @@
 
 using namespace std;
 
-class BlackAndWhiteSolitaire {
+class NiceOrUgly {
 public:
-    int minimumTurns(string cardFront) {
-        int size = cardFront.size();
-        
-        // Case 1: Starting with B
-        int flipsPattern1 = 0;
-        // Start with B
-        char expected = 'B';
-        
-        for (int i = 0; i < size; ++i) {
-            // Check if the current card is in the wrong spot for this pattern
-            if (cardFront[i] != expected) {
-                flipsPattern1++;
+    string describe(string s) {
+        int n = s.size();
+        bool couldBeUgly = false, couldBeNice = false;
+
+        // Check options for the '?' being either a vowel or a consonant
+        for (int mode = 0; mode < 2; ++mode) {
+            int vowels = 0, consonants = 0;
+            bool definitelyUgly = false;
+
+            for (int i = 0; i < n; ++i) {
+                char ch = s[i];
+
+                // Check for ?
+                if (ch == '?') {
+                    if (mode == 0) {
+                        // Treat ? as a vowel
+                        vowels++;
+                        consonants = 0;
+                    } else {
+                        // Treat ? as a consonant
+                        consonants++;
+                        vowels = 0;
+                    }
+                } else if (isVowel(ch)) {
+                    // Vowel found
+                    vowels++;
+                    consonants = 0;
+                } else if (isConsonant(ch)) {
+                    // Consonant found
+                    consonants++;
+                    vowels = 0;
+                }
+
+                // Check for the UGLY condition
+                if (vowels >= 3 || consonants >= 5) {
+                    definitelyUgly = true;
+                    break;
+                }
             }
-            // Flip expected value for the next position
-            if (expected == 'B') {
-                expected = 'W';
+
+            if (!definitelyUgly) {
+                couldBeNice = true;
             } else {
-                expected = 'B';
+                couldBeUgly = true;
             }
         }
 
-        // Case 2: Starting with W
-        int flipsPattern2 = 0;
-        // Start with W
-        expected = 'W';
-        
-        for (int i = 0; i < size; ++i) {
-            // Check if the current card is in the wrong spot for this pattern
-            if (cardFront[i] != expected) {
-                flipsPattern2++;
-            }
-            // Flip expected value for the next position
-            if (expected == 'W') {
-                expected = 'B';
-            } else {
-                expected = 'W';
-            }
+        if (couldBeUgly && couldBeNice) {
+            // Can be either ugly or nice
+            return "42";
+        } else if (couldBeUgly) {
+            // Always ugly
+            return "UGLY";
+        } else {
+            // Always nice
+            return "NICE";
         }
+    }
 
-        // Return the minimum number of flips required
-        return min(flipsPattern1, flipsPattern2);
+    // Function to check if a character is a vowel
+    bool isVowel(char ch) {
+        return ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U';
+    }
+
+    // Function to check if a character is a consonant
+    bool isConsonant(char ch) {
+        // If it is not a vowel but must still be a letter
+        return !isVowel(ch) && ch >= 'A' && ch <= 'Z';
     }
 };

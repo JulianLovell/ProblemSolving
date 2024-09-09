@@ -70,5 +70,6 @@ i can then just return 42.
 Troubleshooting:
 Ive set this up using a lot of bool checks, i dont use them much and they fit here. This is also a good opportunity to use different functions as i mentioned in one of my reflections from a previous problem.
 Hopefully i can get it working this way.
+I got 62/100 on my first attempt, but i can see why. I am not properly handling cases where there are multiple ? like '?????'. I need to track all possibilities of the sequnces of ? without making a hard decision too early.
 
 Reflection:
