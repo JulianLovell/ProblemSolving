@@ -39,7 +39,7 @@ public:
                 }
 
                 // Check for the UGLY condition
-                if (vowels == 3 || consonants == 5) {
+                if (vowels >= 3 || consonants >= 5) {
                     definitelyUgly = true;
                     break;
                 }
