@@ -13,7 +13,6 @@ public:
     string describe(string s) {
         int n = s.length();
         bool possibleUgly = false;
-        bool guaranteedUgly = false;
 
         for (int i = 0; i < n; i++) {
             int vowelCountMin = 0, vowelCountMax = 0;
@@ -57,29 +56,46 @@ public:
 
         // If no definite ugly case is found, but possible ugly exists due to '?'
         if (possibleUgly) {
-            // Handle '?' ambiguity where it could lead to both UGLY and NICE outcomes
             bool canBeNice = false;
             bool canBeUgly = false;
 
+            // Now handle consecutive '?' properly
+            int consecutiveQuestionMarks = 0;
             for (int i = 0; i < n; i++) {
                 if (s[i] == '?') {
-                    // Simulate both vowel and consonant replacements
+                    consecutiveQuestionMarks++;
+                } else {
+                    consecutiveQuestionMarks = 0;
+                }
+
+                if (consecutiveQuestionMarks >= 3) {
+                    // 3 consecutive '?' can lead to either all vowels (UGLY) or consonants (nice)
+                    return "42";
+                }
+            }
+
+            // Simulate both vowel and consonant replacements
+            for (int i = 0; i < n; i++) {
+                if (s[i] == '?') {
+                    // Try replacing '?' with a vowel and consonant in the local context
                     string sVowel = s;
                     string sConsonant = s;
 
-                    // Replace '?' with a vowel ('A') in one string and a consonant ('B') in the other
+                    // Replace '?' with a vowel ('A')
                     sVowel[i] = 'A';
-                    sConsonant[i] = 'B';
-
                     if (describeHelper(sVowel) == "NICE") {
                         canBeNice = true;
                     }
+
+                    // Replace '?' with a consonant ('B')
+                    sConsonant[i] = 'B';
                     if (describeHelper(sConsonant) == "UGLY") {
                         canBeUgly = true;
                     }
 
                     if (canBeUgly && canBeNice) {
-                        return "42";  // Ambiguous, both outcomes are possible
+                        // Ambiguous, both outcomes are possible
+                        return "42";
                     }
                 }
             }
