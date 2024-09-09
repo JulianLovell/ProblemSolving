@@ -1,4 +1,6 @@
+#include <iostream>
 #include <string>
+
 using namespace std;
 
 class NiceOrUgly {
@@ -11,20 +13,21 @@ public:
     string describe(string s) {
         int n = s.length();
         bool possibleUgly = false;
+        bool hasQuestionMark = false;
 
         for (int i = 0; i < n; i++) {
             int vowelCountMin = 0, vowelCountMax = 0;
             int consonantCountMin = 0, consonantCountMax = 0;
 
-            // Check substring of up to 5 characters since max condition is 5 consonants
+            // Check a substring of up to 5 characters
             for (int j = i; j < n && j < i + 5; j++) {
                 char c = s[j];
 
                 if (c == '?') {
-                    // '?' can be both vowel and consonant
+                    // '?' can be either vowel or consonant
+                    hasQuestionMark = true;
                     vowelCountMax++;
                     consonantCountMax++;
-                    // Resetting the min counts since we don't know if it's a vowel or consonant
                     vowelCountMin = max(0, vowelCountMin - 1);
                     consonantCountMin = max(0, consonantCountMin - 1);
                 } else if (isVowel(c)) {
@@ -41,27 +44,30 @@ public:
                     vowelCountMin = 0;
                 }
 
-                // Check if the max (possible) count makes it definitely ugly
+                // If max possible count of consecutive vowels or consonants leads to being ugly
                 if (vowelCountMax >= 3 || consonantCountMax >= 5) {
-                    return "UGLY";
+                    possibleUgly = true;
                 }
 
-                // Check if the definite (min) count makes it definitely ugly
+                // If definite min count makes it definitely ugly
                 if (vowelCountMin >= 3 || consonantCountMin >= 5) {
                     return "UGLY";
                 }
             }
         }
 
-        // If no definite ugly case is found, check if it's ambiguous
-        for (int i = 0; i < n; i++) {
-            if (s[i] == '?') {
-                // If there are still question marks, it can be either NICE or UGLY
+        // If no definite ugly case is found, but possible ugly exists due to '?'
+        if (possibleUgly) {
+            if (hasQuestionMark) {
+                // Can still be either ugly or nice
                 return "42";
+            } else {
+                // No '?', so it's definitely ugly
+                return "UGLY";
             }
         }
 
-        // If it's neither ugly nor ambiguous, it must be NICE
+        // If none of the above, return NICE
         return "NICE";
     }
 };
