@@ -39,8 +39,14 @@ led to me making unnecessary issues elsewhere, which is a mistake i made in prac
 
 Problem 3 - ColorfulRabbits
 Design Ideas:
+This one actually seems intially easier than the first two i did. For every 'unique' number given, i know that there are x+1 rabbits of the color representing that number. However the hard part
+is if there are multiple different colours with the same number of rabbits. I think the solution to this is to calcuate how many groups of x+1 rabbits are needed, based on how many rabbits gave that same reply.
+I'm pretty sure i can just do this by dividing the count of rabbits by x+1 and then rounding up, but im not certain so may need to troubleshoot that further, however just to get it started i will assume that is correct.
+Finally, i want to try using a map for this problem because being comfortable using them would be very helpful, but i have avoided doing so so far.
 
 Troubleshooting:
+I set up the map correctly, but wasn't sure how to search through it in the loop i set up after. After looking around i got the solution i currently have, i don't fully understand it but if it does work properly
+i will make sure to do a bit more research to get comfortable.
 
 Reflection:
 
