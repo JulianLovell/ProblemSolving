@@ -39,6 +39,11 @@ With the re write this problem was pretty simple. I had a good understanding of 
 
 Problem 3 - FairWorkload
 Design Ideas:
+So from what i understand, the problem is to find the optimal partitioning of the cabinets, so no working gets too many folders. To do this i think i can use a binary search approach. 
+Each midpoint could then have some sort of check.
+To refine this thought process: the min in the binary search will be the max number of folders in any cabinet, the max is the total amount of folders, and then using the binary search i can 
+look to find the smallest value of the max number of folders a worker can do. Each midpoint could have a check to see ig iy is possible to seperate the cabinets so that no wokrer has more than the 'midpoint' amount of folders.
+I think this is also another opportunity to use a helper function, in this case it will handle the midpoint check.
 
 Troubleshooting:
 
