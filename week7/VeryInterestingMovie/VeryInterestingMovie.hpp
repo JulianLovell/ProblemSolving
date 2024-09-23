@@ -1,30 +1,33 @@
 #include <iostream>
+#include <vector>
 #include <string>
 
-using namespace std; 
+using namespace std;
 
-class VeryInterestingMovie{
-    public:
-
-    int maximumPupils(string[] seats){
+class VeryInterestingMovie {
+public:
+    int maximumPupils(vector<string> seats) {
         int maxPupils = 0;
 
-        //set up max values of seats and seats i for readability, assuming same number of seats in every row
+        // Get number of rows and seats per row for readability
         int seatRows = seats.size();
         int seatsPerRow = seats[0].size();
 
-        // nested loop to search through elements j of each element i within seats
-        // Rows of seats
-        for (int i = 0; i < seatRows; ++i){
-            // code
-            // Seats within each row
-            for (int j = 0; j < seatsPerRow; ++j){
-                //code
-                // if seats[i[j]] == Y, seat is available, sit pupil
-                if (seats[i[j]] == 'Y'){
+        // Loop through each row
+        for (int i = 0; i < seatRows; ++i) {
+            // Loop through each seat in the current row
+            for (int j = 0; j < seatsPerRow; ++j) {
+                // If the seat is available Y
+                if (seats[i][j] == 'Y') {
+                    // Place a student in this seat
                     ++maxPupils;
+
+                    // Skip the next seat to avoid adjacent placement
+                    j++;
                 }
             }
         }
+
+        return maxPupils;
     }
 };

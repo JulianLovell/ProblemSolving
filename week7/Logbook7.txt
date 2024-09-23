@@ -16,7 +16,8 @@ Firstly, i was using the wrong comparison within my else if function, secondly m
 a lot of it and add a helper function to handle the digit sum calculation. This should improve everything and get it working.
 
 Reflection:
-For all of these problems, i am carrying on 
+After the first bit of troubleshooting, i got this working straight away. I was right in my assumption of the errors and i am glad i was able to get some good practice with a working helper function, which i normally
+am afraid to use.
 
 Problem 2 - VeryInterestingMovie
 Design Ideas:
@@ -26,6 +27,11 @@ is probably optimal to skip that one and start from the next. I am not quite sur
 from there, i might be overthinking this and that will just work.
 
 Troubleshooting:
+Like the previous, i am picking this up from the workshop progress i made. I dont think i had a properly compiliing program, but what i did already have was logically correct. This means all i need to fix 
+is some syntax error related issues.
+
+Upon another look i had some more issues. I also had some mistakes with incorrect seat indexing, which i just corrected by using seats[i][j] to properly access the seats.
+Finally, i am also going to mostly re write this one as i dont remember my exact thoughts when last working on this in class. I will again use a lot of it as a base but write from the start again to follow my thought process.
 
 Reflection:
 
