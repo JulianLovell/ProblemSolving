@@ -46,12 +46,18 @@ look to find the smallest value of the max number of folders a worker can do. Ea
 I think this is also another opportunity to use a helper function, in this case it will handle the midpoint check.
 
 Troubleshooting:
+I got a bit lost while solving this one at a few different points. However nothing that fully stopped my progress. I knew roughly what i wanted to do but not the specifics on how to approach it, which 
+is clear from what i wrote in design ideas. 
 
 Reflection:
+I think this one ended up being great practice for a few different things. I got more practice on a greedy appraoch which i am pretty comfortable with now. But i also got to use a binary search, as well as a new 
+library which i do not think i have used before. Overall, despite getting a bit confused i am happy with my work on this problem, however in the future i think i need to make sure i write out a clearer initial plan.
 
 
 Problem 4 - PrefixFreeSets (BONUS)
 Design Ideas:
+I think i can just use a brute force method where i compare every word against every other word. I can just iterate through the words, checking if each is a prefix of another and just excluding that from
+the final word count. This way i can just build up the largest prefix free set.
 
 Troubleshooting:
 
