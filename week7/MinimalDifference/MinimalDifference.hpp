@@ -1,49 +1,40 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
 class MinimalDifference {
-    public:
-    int findNumber(int A, int B, int C){
-        int closest = A;
-
-        // find digit sum of C
-        int num = C;
-        int goalDigitSum = 0;
-        int mod = 0;
-
-        while (num > 0){
-            mod = num % 10;
-            goalDigitSum = goalDigitSum + mod;
-            num = num/10;
+public:
+    // Helper function to calculate the digit sum of a number
+    int digitSum(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
         }
+        return sum;
+    }
+
+    int findNumber(int A, int B, int C) {
+        // Calculate the digit sum of C
+        int goalDigitSum = digitSum(C);
+        
+        int closest = A;
+        // Starting with the difference for A
+        int closestDiff = abs(digitSum(A) - goalDigitSum);  
 
         // Iterate through elements A -> B, checking for closest digit sum
-        for (int i = A; i <= B; ++i){
-            // find digit sum of i
-            int num = i;
-            int currentDigitSum = 0;
-            int mod = 0;
+        for (int i = A; i <= B; ++i) {
+            int currentDigitSum = digitSum(i);
+            int currentDiff = abs(currentDigitSum - goalDigitSum);
 
-            // digit sum calc
-            while(num > 0){    
-            mod = num % 10;    
-            currentDigitSum = currentDigitSum + mod;    
-            num = num/10;    
-            }
-
-            // if currentDigitSum == c, return current number
-            if (currentDigitSum == goalDigitSum){
-                return i;
-
-            // else if c - currentDigitSum < c - closest, then closest = current number
-            } else if ((C - currentDigitSum) < (C - goalDigitSum)){
+            // Update closest if a smaller difference is found, or if it's tied but i is smaller
+            if (currentDiff < closestDiff || (currentDiff == closestDiff && i < closest)) {
                 closest = i;
+                closestDiff = currentDiff;
             }
-            
-
-
         }
+
         return closest;
     }
 };

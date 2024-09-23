@@ -11,8 +11,12 @@ Troubleshooting:
 After the first submission i notice that my current iteration fails when C > B, this is because i am trying to find the digit sum closest to C, not the digit sum closest to 
 the digit sum of C. This should be an easy fix by just finding the digit sum of c at the start and then using that in the if statement checks rather than C.
 
-Reflection:
+For all of these problems, i am carrying on from progress i made in the initial workshop session where i started these. Looking at this one again, i was very close however there were some issues i need to address.
+Firstly, i was using the wrong comparison within my else if function, secondly my code is very inefficient by recalculating the digit sum each time. I think i will take a lot of what i already have, but re write
+a lot of it and add a helper function to handle the digit sum calculation. This should improve everything and get it working.
 
+Reflection:
+For all of these problems, i am carrying on 
 
 Problem 2 - VeryInterestingMovie
 Design Ideas:
