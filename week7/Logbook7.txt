@@ -60,6 +60,10 @@ I think i can just use a brute force method where i compare every word against e
 the final word count. This way i can just build up the largest prefix free set.
 
 Troubleshooting:
+My first attempt failed in cases where the shorter words werent being properly excluded. This is because i was comparing all words with eachother, meaning that unnecessary exclusions were being made.
+Fixing this is pretty simple, i can just srot the words by length and then only compare the shorter words with those that are longer.
 
 Reflection:
+I took quite a simple approach for this problem, making it easier than some of the others. I think this made a good learning experience to not always look to overcomplicate things, especially in prac exams, just sticking
+to what i know i can confidently code is beneficial. I only needed to make one straight forward fix too, which i am happy with.
 
