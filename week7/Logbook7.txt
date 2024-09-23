@@ -34,6 +34,7 @@ Upon another look i had some more issues. I also had some mistakes with incorrec
 Finally, i am also going to mostly re write this one as i dont remember my exact thoughts when last working on this in class. I will again use a lot of it as a base but write from the start again to follow my thought process.
 
 Reflection:
+With the re write this problem was pretty simple. I had a good understanding of what to do once i got the general logic. I used a greedy approach, which involved placing the students and then immediately skipping seats.
 
 
 Problem 3 - FairWorkload
