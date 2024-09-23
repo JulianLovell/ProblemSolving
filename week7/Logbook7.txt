@@ -1,0 +1,43 @@
+
+JULIAN'S LOGBOOK
+
+Problem 1 - MinimalDifference
+Design Ideas:
+Starting at integer A, iterate through the digit sums up until int B is reached. At each iteration check if it is closer to C and if so, then update that as the closest. 
+If at any point, the digit sum == int C, then return the current number we are on, since we are iterating up, the smallest will always be reached first.
+The hard part i think is finding the digit sum, i have done this is the past using a method with a modulus, which i will need to try to remember again.
+
+Troubleshooting:
+After the first submission i notice that my current iteration fails when C > B, this is because i am trying to find the digit sum closest to C, not the digit sum closest to 
+the digit sum of C. This should be an easy fix by just finding the digit sum of c at the start and then using that in the if statement checks rather than C.
+
+Reflection:
+
+
+Problem 2 - VeryInterestingMovie
+Design Ideas:
+Seems like i can just iterate through each element of seats, using a counter on how many students are able to fit. Then continuing this into the other elements too. 
+The hard part which i know there will be test cases for, is handling the unavailable seats. I could just start from the first available seat but there will be cases where it
+is probably optimal to skip that one and start from the next. I am not quite sure how i will handle this, so i am going to start with the basis of the code and see how it goes
+from there, i might be overthinking this and that will just work.
+
+Troubleshooting:
+
+Reflection:
+
+
+Problem 3 - FairWorkload
+Design Ideas:
+
+Troubleshooting:
+
+Reflection:
+
+
+Problem 4 - PrefixFreeSets (BONUS)
+Design Ideas:
+
+Troubleshooting:
+
+Reflection:
+
