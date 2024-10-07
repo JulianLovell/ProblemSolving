@@ -43,6 +43,8 @@ To fix this i just had to subtract the corresponding number of matches from n.
 After that i was returning an empty string if the program couldnt form enough digits, such as cases where the number of matches was smaller than the smallest match requirement.
 I just added a condition to return 0 if no digits got selected after the loop.
 
+As i predicted the greedy approach caused issues. I have mosttly rewritten it but still using a bit of the same logic.
+
 Reflection:
 
 

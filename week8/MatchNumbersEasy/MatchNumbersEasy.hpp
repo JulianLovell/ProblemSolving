@@ -10,26 +10,32 @@ public:
     string maxNumber(vector<int> matches, int n) {
         string result = "";
         
-        // Get the smallest matches value to ensure loop condition works properly
+        // Find the smallest number of matches needed for any digit
         int minMatches = *min_element(matches.begin(), matches.end());
 
-        // While loop to continue until we run out of matches
-        while (n >= minMatches) {
-            // Iterate backwards through the matches to prioritize larger digits
-            for (int i = matches.size() - 1; i >= 0; --i) {
-                // Check if we have enough matches for the current digit
-                if (n >= matches[i]) {
-                    // Append the current digit to the result
-                    result += to_string(i);
-                    // Subtract the number of matches used for this digit
-                    n -= matches[i];
-                    // Break to start checking from the largest digit again
+        // Calculate how many digits we can form with the available matches
+        int numDigits = n / minMatches;
+        // If no digits can be formed, return 0
+        if (numDigits == 0) return "0";
+
+        // Now, try to maximize the value of the digits we can form
+        for (int i = 0; i < numDigits; ++i) {
+            // Find the largest possible digit we can use for this position
+            for (int j = matches.size() - 1; j >= 0; --j) {
+                int remainingMatches = n - matches[j];
+                // Matches required for the remaining digits
+                int remainingDigits = (numDigits - i - 1) * minMatches;
+
+                if (remainingMatches >= remainingDigits) {
+                    // If we can afford to use this digit and still have enough matches left
+                    result += to_string(j);
+                    // Subtract the used matches
+                    n -= matches[j];
                     break;
                 }
             }
         }
-        
-        // If no number formed, return 0
-        return result.empty() ? "0" : result;
+
+        return result;
     }
 };
