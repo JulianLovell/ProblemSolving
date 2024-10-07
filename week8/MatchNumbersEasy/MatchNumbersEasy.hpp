@@ -26,6 +26,8 @@ public:
 
         // Now, try to maximize the value of the digits we can form
         for (int i = 0; i < numDigits; ++i) {
+            // Track if any digit was selected for this position
+            bool digitSelected = false;
             // Find the largest possible digit we can use for this position
             for (int j = matches.size() - 1; j >= 0; --j) {
                 int remainingMatches = n - matches[j];
@@ -45,8 +47,14 @@ public:
                     n -= matches[j];
                     // Mark that we've selected the first digit
                     leadingDigitSelected = true;
+                    // Valid digit has been selected for this position
+                    digitSelected = true;  
                     break;
                 }
+            }
+            // If no valid digit could be selected, add 0 and continue
+            if (!digitSelected) {
+                result += "0";
             }
         }
 
