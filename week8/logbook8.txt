@@ -1,4 +1,3 @@
-
 JULIAN'S LOGBOOK
 
 Problem 1 - Thimbles
@@ -51,6 +50,8 @@ I fell into an issue which i encounter quite a bit where i make a lot of smaller
 so far and decided to rewrite it. The new code is a lot simpler and makes more sense, while hopefully also working properly now.
 
 Reflection:
+In the end i got it working fine. On this problem i got confused with all the revisions i was making, which is something that i do occassionally. In the future i need to make sure i am more deliberate with my fixes
+so i know exaclty what is being changed and dont end up just confusing myself.
 
 
 Problem 3 - HandsShaking
@@ -68,8 +69,18 @@ chance a formula i know well.
 
 Problem 4 - CorporationSalary
 Design Ideas:
+For this problem, I thought i could represent the hierarchy as a graph, where each employee is a node, and edges point from managers to their direct subordinates. 
+This is new for me to use in problems, but i have learned it in the past so shouldnt have much trouble.
+I can use recursion to get each employee's salary: if someone has no subordinates, their salary is 1. otherwise, it's the sum of their direct subordinates' salaries. 
+I can also memoization by storing each salary in a memo array. This way, I wont have to recalculate salaries for employees I've already processed, which i can save time on and is a mistake i made on a problem in a previous week.
 
 Troubleshooting:
+I am returning to this one after making a brief outline and design ideas from class last week. 
+I was getting some issues with the indexing, where i was mixing up the manager and subordinate indices, therefore throwing off the entire salary calculation.
+I also wasnt very familiar with actually implementing memoization so that took a little while. 
+While it is done, the code was pretty complicated for me to get my head around while writing, so hopefully it works so i dont have to troubleshoot too much here.
 
 Reflection:
+This was a great chance to build some more confidence with using graphs. I also used memoization which i shouldve used on a problem in a previous week and it caused me issues. Its good that i was able to learn from 
+that and use it here this time. I still wouldnt say i am very confident in solving problems using these techniques but it was a good start to get some practice.
 
