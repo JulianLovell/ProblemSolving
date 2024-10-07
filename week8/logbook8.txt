@@ -54,8 +54,11 @@ Im not sure, but i feel like there might just be a mathematical solution to this
 formula instead of a standard approach like the rest. After looking into it a bit, i was right. I can use the Catalan Number formula which should make this quite simple.
 
 Troubleshooting:
+No issues.
 
 Reflection:
+I was correct in being able to use a mathematical formula. While it was an interesting solution for this problem, in an exam condition i would not be able to solve a problem in this way, unless it was by complete
+chance a formula i know well.
 
 
 Problem 4 - CorporationSalary
