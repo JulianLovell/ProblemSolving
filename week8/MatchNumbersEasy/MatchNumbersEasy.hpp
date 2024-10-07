@@ -8,56 +8,44 @@ using namespace std;
 class MatchNumbersEasy {
 public:
     string maxNumber(vector<int> matches, int n) {
-        string result = "";
-        
-        // Find the smallest number of matches needed for any digit
-        int minMatches = *min_element(matches.begin(), matches.end());
+        // Find the minimum number of matches needed to form any digit
+        int minMatch = *min_element(matches.begin(), matches.end());
 
-        // If no digits can be formed return 0
-        if (n < minMatches) return "0";
-
-        // Calculate how many digits we can form with the available matches
-        int numDigits = n / minMatches;
-        // If no digits can be formed, return 0
+        // Calculate the maximum number of digits that can be formed
+        int numDigits = n / minMatch;
         if (numDigits == 0) return "0";
 
-        // Flag to avoid leading zeros
-        bool leadingDigitSelected = false;
+        // Check if only 0 can be formed
+        bool onlyZero = true;
+        for(int i = 1; i < matches.size(); ++i){
+            if(matches[i] <= n){
+                onlyZero = false;
+                break;
+            }
+        }
+        if(onlyZero){
+            // If 0 can be formed, return 0
+            return "0";
+        }
 
-        // Now, try to maximize the value of the digits we can form
-        for (int i = 0; i < numDigits; ++i) {
-            // Track if any digit was selected for this position
-            bool digitSelected = false;
-            // Find the largest possible digit we can use for this position
-            for (int j = matches.size() - 1; j >= 0; --j) {
-                int remainingMatches = n - matches[j];
-                // Matches required for the remaining digits
-                int remainingDigits = (numDigits - i - 1) * minMatches;
+        string result = "";
+        for(int i = 0; i < numDigits; ++i){
+            // Try to place the largest possible digit at the current position
+            for(int d = matches.size()-1; d >=0; --d){
+                // Not enough matches for this digit
+                if(matches[d] > n) continue;
 
-                // If we are selecting the first digit, avoid choosing 0 unless it's the only choice
-                if (!leadingDigitSelected && j == 0 && numDigits > 1) {
-                    // Skip the digit 0 for the first digit
-                    continue;
-                }
-
-                if (remainingMatches >= remainingDigits) {
-                    // If we can afford to use this digit and still have enough matches left
-                    result += to_string(j);
-                    // Subtract the used matches
-                    n -= matches[j];
-                    // Mark that we've selected the first digit
-                    leadingDigitSelected = true;
-                    // Valid digit has been selected for this position
-                    digitSelected = true;  
+                // Check if the remaining matches can form the rest of the digits
+                if(n - matches[d] >= (numDigits - i -1) * minMatch){
+                    // Avoid leading zero if it's not the only digit
+                    if(i == 0 && d == 0 && numDigits >1) continue;
+                    
+                    result += to_string(d);
+                    n -= matches[d];
                     break;
                 }
             }
-            // If no valid digit could be selected, add 0 and continue
-            if (!digitSelected) {
-                result += "0";
-            }
         }
-
         return result;
     }
 };

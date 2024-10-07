@@ -47,6 +47,9 @@ As i predicted the greedy approach caused issues. I have mosttly rewritten it bu
 I was also getting issues with leading zeros, so added a flag to track whether we have selected the first non zero digit.
 Finally ive just made a mistake in how i was returning cases where no digits could be formed. I just misread the question and i think i was returning an empty string instead of 0.
 
+I fell into an issue which i encounter quite a bit where i make a lot of smaller changes and get lost with my code, leading to it getting messy and worse. I took what i had and what i had learned on the problem
+so far and decided to rewrite it. The new code is a lot simpler and makes more sense, while hopefully also working properly now.
+
 Reflection:
 
 
