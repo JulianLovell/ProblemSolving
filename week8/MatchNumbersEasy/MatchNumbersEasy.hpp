@@ -13,6 +13,9 @@ public:
         // Find the smallest number of matches needed for any digit
         int minMatches = *min_element(matches.begin(), matches.end());
 
+        // If no digits can be formed return 0
+        if (n < minMatches) return "0";
+
         // Calculate how many digits we can form with the available matches
         int numDigits = n / minMatches;
         // If no digits can be formed, return 0

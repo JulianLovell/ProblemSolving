@@ -45,6 +45,7 @@ I just added a condition to return 0 if no digits got selected after the loop.
 
 As i predicted the greedy approach caused issues. I have mosttly rewritten it but still using a bit of the same logic.
 I was also getting issues with leading zeros, so added a flag to track whether we have selected the first non zero digit.
+Finally ive just made a mistake in how i was returning cases where no digits could be formed. I just misread the question and i think i was returning an empty string instead of 0.
 
 Reflection:
 
