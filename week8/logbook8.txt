@@ -44,13 +44,12 @@ After that i was returning an empty string if the program couldnt form enough di
 I just added a condition to return 0 if no digits got selected after the loop.
 
 Reflection:
-Initially, I hadn’t considered how to handle cases where fewer matches were available, and this resulted in the program returning an empty result. 
-After addressing that issue, it was simple enough but i learned quite a bit from it.
+
 
 Problem 3 - HandsShaking
 Design Ideas:
 Im not sure, but i feel like there might just be a mathematical solution to this one. I picked it because i thought it would be interesting, if i am right, to solve it using a
-formula instead of a standard approach like the rest.
+formula instead of a standard approach like the rest. After looking into it a bit, i was right. I can use the Catalan Number formula which should make this quite simple.
 
 Troubleshooting:
 
