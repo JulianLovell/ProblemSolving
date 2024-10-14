@@ -4,15 +4,15 @@
 using namespace std;
 
 class CellRemoval {
-public:
+   public:
     // Helper function for DFS to count remaining cells
     void dfs(int node, const vector<vector<int>>& tree, vector<bool>& deleted, int& count) {
         // If the node is deleted, skip it
         if (deleted[node]) return;
-        
+
         // Increase count since this cell is not deleted
         count++;
-        
+
         // Recursively visit all children
         for (int child : tree[node]) {
             dfs(child, tree, deleted, count);
@@ -24,7 +24,7 @@ public:
         int n = parentCell.size();
         // Tree representation as an adjacency list
         vector<vector<int>> tree(n);
-        
+
         // Build the tree from the parentCell array
         int root = -1;
         for (int i = 0; i < n; ++i) {
@@ -42,10 +42,10 @@ public:
         vector<bool> deleted(n, false);
         // Mark the deleted cell
         deleted[deletedCell] = true;
-        
+
         // If the root itself is deleted, return 0
         if (deletedCell == root) return 0;
-        
+
         // Count remaining cells using DFS
         int remainingCells = 0;
         // Start DFS from the root
