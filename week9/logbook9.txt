@@ -10,6 +10,8 @@ Troubleshooting:
 Initial implementation i think i managed to have my program expanding the range as much as possible rather than minimising it.
 I am also comparing the positions of all cats moved left and then all cats moved right. 
 I got a bit mixed up and didnt follow my design ideas correctly.
+After a revision to get it closer to my original thought process, it am still encountering issues. I was taking a greedy approach which was clearly causing some issues. 
+I think i can try to use a bit mask to check every combination and then returning the minrange from that instead.
 
 Reflection:
 
