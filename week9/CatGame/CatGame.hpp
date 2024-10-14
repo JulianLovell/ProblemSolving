@@ -12,8 +12,8 @@ public:
         sort(coordinates.begin(), coordinates.end());
 
         // Initialise min and max
-        int minPos = INT_MAX;
-        int maxPos = INT_MIN;
+        int minPos = coordinates[0] - X;
+        int maxPos = coordinates[coordinates.size() - 1] + X;
 
         // Iterate through all the coordinates and adjust the positions
         for (int i = 0; i < coordinates.size(); ++i) {
@@ -33,14 +33,12 @@ public:
                 // Move it left to reduce the gap
                 coordinates[i] = moveLeft;
             }
-            // If current position is within the ranges
+            // If current position is within ranges
             else {
-                // Check which is further away
-                if (current - minPos > maxPos - current) {
-                    // Move towards minPos
+                // Move towards the min/max based on which gives a better range
+                if (current - minPos >= maxPos - current) {
                     coordinates[i] = moveLeft;
                 } else {
-                    // Move towards maxPos
                     coordinates[i] = moveRight;
                 }
             }
