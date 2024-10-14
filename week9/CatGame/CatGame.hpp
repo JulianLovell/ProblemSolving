@@ -37,6 +37,10 @@ class CatGame {
                     coordinates[i] = rightMove;
                 }
             }
+
+            // Recalculate minCat and maxCat after the move
+            minCat = min(minCat, coordinates[i]);
+            maxCat = max(maxCat, coordinates[i]);
         }
 
         // Return the smallest possible difference between max and min positions
