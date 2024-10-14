@@ -27,6 +27,8 @@ and previous classes.
 Also we did somewhat work with a tree structure with the manager dependants problem from last week i think.
 
 Troubleshooting:
+First implementation i believe has an issue with the DFS, wehre it is not correctly handling the cells with one or no children. I just need to adjust the DFS logic to make sure that when a parent node has only one remaining 
+child, the reminaing child is correctly counted.
 
 Reflection:
 
