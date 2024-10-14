@@ -12,8 +12,8 @@ public:
         sort(coordinates.begin(), coordinates.end());
 
         // Initialise min and max
-        int minPos = coordinates[0] - X;
-        int maxPos = coordinates[coordinates.size() - 1] + X;
+        int minPos = coordinates[0];
+        int maxPos = coordinates[coordinates.size() - 1];
 
         // Iterate through all the coordinates and adjust the positions
         for (int i = 0; i < coordinates.size(); ++i) {
