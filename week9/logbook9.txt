@@ -12,12 +12,19 @@ I am also comparing the positions of all cats moved left and then all cats moved
 I got a bit mixed up and didnt follow my design ideas correctly.
 After a revision to get it closer to my original thought process, it am still encountering issues. I was taking a greedy approach which was clearly causing some issues. 
 I think i can try to use a bit mask to check every combination and then returning the minrange from that instead.
+That approach passed 85/100 cases, so definitley better. It seems to just not be working for larger cases. I think while in theory the bitmask does work, the larger inputs just cause issues. So i will have to revise this one again.
+I might just come back to this one after working on a couple of the others.
 
 Reflection:
 
 
 Problem 2 - CellRemoval
 Design Ideas:
+I think this is the first problem i have done that involves working with a tree. I guess the rough plan for this solution would be to build the tree with an adjacency list. Then starting from 
+deletedCell, i can traverse the dependants and mark them as deleted. Then i just count the remaining cells, using something like a DFS.
+This definitley seems like the most complicated problem so far, however i dont think it should acctually be too difficult. I will just need to utilise a few different techniques that i have learned from this class
+and previous classes.
+Also we did somewhat work with a tree structure with the manager dependants problem from last week i think.
 
 Troubleshooting:
 
