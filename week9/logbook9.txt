@@ -45,12 +45,21 @@ I can code in these checks, however i presume i will encounter issues where ther
 1 being placed in an invalid position.
 
 Troubleshooting:
+No issues.
 
 Reflection:
-
+I had no issues with this one. It is interesting how in some problems i find it very easy vs others (even supposedly easier ones), i have a hard time. It shows where my knowledge lies and what i am generally more
+confident working with. This one just required a basic understanding of the logic checks required and then the use of a map to count frequencies of each colour, solving it very simply.
+I guess my strenghts lie more in the logic and thinking of solutions, but i get lost when forced to do more difficult coding practices.
 
 Problem 4 - ErdosNumber
 Design Ideas:
+Ok so Erdos has an erdos number of 0, and each author who has co-authored a paper with an author with an erdos number 'n' has an erdos number of 'n+1'. I think this is a BFS problem, which is a nice change from the DFS
+i used just before.
+So the process to solve this is:
+ - Treat problem as a graph where each node is an author and each edge exists if authors have co-authored a paper
+ - Start with Erdos (erdos number = 0) and explore all co-authors using BFS, assign erdos numbers as we traverse the graph
+ - Final output will be the return of the list of the authors sorted. If an author cannot be connected to Erdos, just return their name with no number.
 
 Troubleshooting:
 
