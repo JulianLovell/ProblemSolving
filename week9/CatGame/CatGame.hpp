@@ -7,12 +7,12 @@ using namespace std;
 class CatGame {
 public:
     int getNumber(vector<int> coordinates, int X) {
-        // Sort the coordinates to process them in order
+        // Sort the coordinates
         sort(coordinates.begin(), coordinates.end());
 
-        // Initialize min and max based on the first and last elements in the sorted array
-        int minPos = coordinates[0] - X;
-        int maxPos = coordinates[coordinates.size() - 1] + X;
+        // Initialise min and max based on the first and last elements in the sorted array
+        int minPos = coordinates[0];
+        int maxPos = coordinates[coordinates.size() - 1];
 
         // Iterate through all the coordinates and adjust the positions
         for (int i = 0; i < coordinates.size(); ++i) {
@@ -32,7 +32,7 @@ public:
                 // Move it left to reduce the gap
                 coordinates[i] = moveLeft;
             }
-            // If current position is within [minPos, maxPos]
+            // If current position is within ranges
             else {
                 // Check which is further away, min or max
                 if (abs(current - minPos) > abs(current - maxPos)) {
