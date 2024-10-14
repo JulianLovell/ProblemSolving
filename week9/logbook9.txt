@@ -7,6 +7,9 @@ The middle cat(s) then need to move left or right depending on which will keep i
 I think to begin i want to program the highest and lowest cats to move closer as said above, and then some sort of conditional check to see if any in the centre should move left or right.
 
 Troubleshooting:
+Initial implementation i think i managed to have my program expanding the range as much as possible rather than minimising it.
+I am also comparing the positions of all cats moved left and then all cats moved right. 
+I got a bit mixed up and didnt follow my design ideas correctly.
 
 Reflection:
 

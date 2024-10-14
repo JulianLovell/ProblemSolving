@@ -1,29 +1,45 @@
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <climits>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-class CatGame{
-    public:
-    int getNumber(vector<int> coordinates, int X){
-        // Initialise the min and max possible positions
-        int minPosition = INT_MAX;
-        int maxPosition = INT_MIN;
+class CatGame {
+   public:
+    int getNumber(vector<int> coordinates, int X) {
+        // Sort the coordinates
+        sort(coordinates.begin(), coordinates.end());
 
-        // Iterate over all cats to find max/min positions
-        for (int i = 0; i < coordinates.size(); ++i){
-            //For each cat, calculate both possible positions
-            int leftPos = coordinates[i] - X;
-            int rightPos = coordinates[i] + X;
+        // Initialize min and max cats to the first and last position
+        int minCat = coordinates[0];
+        int maxCat = coordinates.back();
 
-            // Update gloabal min and max positions
-            minPosition = min(minPosition, min(leftPos, rightPos));
-            maxPosition = max(maxPosition, max(leftPos, rightPos));
+        // Iterate over all cats
+        for (int i = 1; i < coordinates.size(); ++i) {
+            // Calculate the possible new positions for the current cat
+            int leftMove = coordinates[i] - X;
+            int rightMove = coordinates[i] + X;
+
+            // Move the cat in a way that keeps the range between minCat and maxCat smallest
+            if (leftMove > maxCat || rightMove < minCat) {
+                // If the left move extends the range, move the cat to the right
+                if (rightMove < minCat) {
+                    coordinates[i] = rightMove;
+                } else {
+                    coordinates[i] = leftMove;
+                }
+            } else {
+                // If the cat can be moved inside the minCat/maxCat range, choose the direction
+                if (abs(leftMove - minCat) < abs(rightMove - maxCat)) {
+                    coordinates[i] = leftMove;
+                } else {
+                    coordinates[i] = rightMove;
+                }
+            }
         }
 
-        // Return the smallest possible difference between the max and min positions
-        return maxPosition - minPosition;
+        // Return the smallest possible difference between max and min positions
+        return maxCat - minCat;
     }
 };
