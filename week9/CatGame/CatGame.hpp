@@ -20,7 +20,7 @@ class CatGame{
 
             // Update gloabal min and max positions
             minPosition = min(minPosition, min(leftPos, rightPos));
-            maxPosition = max(maxPosition, max(leftPos, rightPos))
+            maxPosition = max(maxPosition, max(leftPos, rightPos));
         }
 
         // Return the smallest possible difference between the max and min positions
