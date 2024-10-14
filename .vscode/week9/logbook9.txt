@@ -1,0 +1,36 @@
+JULIAN'S LOGBOOK
+
+Problem 1 - CatGame
+Design Ideas:
+I gather that each cat can move either left or right, it is not that ALL cats move left/right. So typically i would want the lowest position cat to always move up (right), and the highest to always look to move down.
+The middle cat(s) then need to move left or right depending on which will keep it closest. I also notice that cats can end on the same space, resulting in 0 as the return. 
+I think to begin i want to program the highest and lowest cats to move closer as said above, and then some sort of conditional check to see if any in the centre should move left or right.
+
+Troubleshooting:
+
+Reflection:
+
+
+Problem 2 - CellRemoval
+Design Ideas:
+
+Troubleshooting:
+
+Reflection:
+
+
+Problem 3 - CubeStickers
+Design Ideas:
+
+Troubleshooting:
+
+Reflection:
+
+
+Problem 4 - ErdosNumber
+Design Ideas:
+
+Troubleshooting:
+
+Reflection:
+
