@@ -31,10 +31,18 @@ First implementation i believe has an issue with the DFS, wehre it is not correc
 child, the reminaing child is correctly counted.
 
 Reflection:
+Ok thats got it fully working. While i didnt find this problem as difficult as others, it definitley required me to implement some more complicated strategies and combine them together. This included things like
+handling a tree, helper functions and DFS. I think if i got a problem like this in the prac exam i would have a pretty bad time but luckily i had time and no pressure to get it done while at home.
 
 
 Problem 3 - CubeStickers
 Design Ideas:
+I think this one will be quite logic based and the solution will depend on how many stickers there are of each colour. From what i can think of the requirements for a valid solution are:
+1. if we have 3 or more stickers of the smae colour then at most 2 of those can be placed
+2. if we have exactly 2 stickers of the same colour then we can use both
+3. if we have only 1 sticker of a colour then we can use it.
+I can code in these checks, however i presume i will encounter issues where there are something like several colours of 2 stickers, where they pass the max sticker check but cannot all fit on without at least 
+1 being placed in an invalid position.
 
 Troubleshooting:
 
