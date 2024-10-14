@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <climits>
 
 using namespace std;
 
@@ -10,9 +11,9 @@ public:
         // Sort the coordinates
         sort(coordinates.begin(), coordinates.end());
 
-        // Initialise min and max based on the first and last elements in the sorted array
-        int minPos = coordinates[0];
-        int maxPos = coordinates[coordinates.size() - 1];
+        // Initialize min and max with extreme values to be updated in the loop
+        int minPos = INT_MAX;
+        int maxPos = INT_MIN;
 
         // Iterate through all the coordinates and adjust the positions
         for (int i = 0; i < coordinates.size(); ++i) {
