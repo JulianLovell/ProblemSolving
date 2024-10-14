@@ -1,31 +1,55 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <climits>
 
 using namespace std;
 
 class CatGame {
 public:
     int getNumber(vector<int> coordinates, int X) {
-        int minPos = INT_MAX;
-        int maxPos = INT_MIN;
+        // Sort the coordinates to process them in order
+        sort(coordinates.begin(), coordinates.end());
 
-        // For each cat, consider both possible positions (move left or right)
+        // Initialize min and max based on the first and last elements in the sorted array
+        int minPos = coordinates[0] - X;
+        int maxPos = coordinates[coordinates.size() - 1] + X;
+
+        // Iterate through all the coordinates and adjust the positions
         for (int i = 0; i < coordinates.size(); ++i) {
-            int left = coordinates[i] - X;
-            int right = coordinates[i] + X;
+            int current = coordinates[i];
+            // Position if moved left
+            int moveLeft = current - X;
+            // Position if moved right
+            int moveRight = current + X;
 
-            // Update the minimum position with the smallest possible value
-            minPos = min(minPos, left);
-            minPos = min(minPos, right);
+            // Check if the current position is smaller than minPos
+            if (current < minPos) {
+                // Move it right to reduce the gap
+                coordinates[i] = moveRight;
+            }
+            // Check if the current position is larger than maxPos
+            else if (current > maxPos) {
+                // Move it left to reduce the gap
+                coordinates[i] = moveLeft;
+            }
+            // If current position is within [minPos, maxPos]
+            else {
+                // Check which is further away, min or max
+                if (abs(current - minPos) > abs(current - maxPos)) {
+                    // Move towards minPos
+                    coordinates[i] = moveLeft;
+                } else {
+                    // Move towards maxPos
+                    coordinates[i] = moveRight;
+                }
+            }
 
-            // Update the maximum position with the largest possible value
-            maxPos = max(maxPos, left);
-            maxPos = max(maxPos, right);
+            // Update min and max based on the new position
+            minPos = min(minPos, coordinates[i]);
+            maxPos = max(maxPos, coordinates[i]);
         }
 
-        // Return the smallest possible difference between the rightmost and leftmost positions
+        // Return the final difference between max and min positions
         return maxPos - minPos;
     }
 };
