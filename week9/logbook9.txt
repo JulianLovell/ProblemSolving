@@ -62,6 +62,9 @@ So the process to solve this is:
  - Final output will be the return of the list of the authors sorted. If an author cannot be connected to Erdos, just return their name with no number.
 
 Troubleshooting:
+I took a little while and got stuck at some points, but no major issues surprisingly.
 
 Reflection:
-
+This week managed to have the hardest problem so far, and then this one after which was even harder. These problems at least, seem to be more based on my understanding of the logic behind the solution rather than 
+being just difficult in general. I think because i was able to undestand the logic i didnt have as much trouble with it, as i was able to take as long as i needed to actually just code it. Again, in a prac exam, 
+a problem like this would be bordering on just instantly skipping and working on the next.

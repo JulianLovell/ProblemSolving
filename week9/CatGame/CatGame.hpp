@@ -1,33 +1,27 @@
-// #include <algorithm>
-// #include <iostream>
-// #include <vector>
-// #include <climits>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <climits>
 
-// using namespace std;
+using namespace std;
 
-// class CatGame {
-//    public:
-//     int getNumber(vector<int> coordinates, int X) {
-//         int n = coordinates.size();
-//         int minRange = INT_MAX;
+class CatGame {
+public:
+    int getNumber(vector<int> coordinates, int X) {
+        int minPos = INT_MAX;
+        int maxPos = INT_MIN;
 
-//         // Try all combinations of moving each cat left or right
-//         for (int mask = 0; mask < (1 << n); ++mask) {
-//             int minPosition = INT_MAX;
-//             int maxPosition = INT_MIN;
+        // For each cat, calculate both possible positions (move left or right)
+        for (int i = 0; i < coordinates.size(); ++i) {
+            int left = coordinates[i] - X;
+            int right = coordinates[i] + X;
 
-//             // For each cat, decide whether to move it left or right based on the bit in mask
-//             for (int i = 0; i < n; ++i) {
-//                 int newPos = (mask & (1 << i)) ? coordinates[i] + X : coordinates[i] - X;
+            // Update the minimum and maximum possible positions
+            minPos = min(minPos, min(left, right));
+            maxPos = max(maxPos, max(left, right));
+        }
 
-//                 minPosition = min(minPosition, newPos);
-//                 maxPosition = max(maxPosition, newPos);
-//             }
-
-//             // Calculate the range for this configuration and update the minimum range found
-//             minRange = min(minRange, maxPosition - minPosition);
-//         }
-
-//         return minRange;
-//     }
-// };
+        // Return the difference between the maximum and minimum positions
+        return maxPos - minPos;
+    }
+};
