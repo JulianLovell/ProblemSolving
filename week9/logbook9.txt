@@ -16,6 +16,7 @@ That approach passed 85/100 cases, so definitley better. It seems to just not be
 I might just come back to this one after working on a couple of the others.
 
 Reflection:
+I am not sure why i struggled so much on this one. I knew exactly what i wanted to do to solve it, and was able to get that logic in code too eventually. I think i just wasnt able to handle the 'interior' cats correctly.
 
 
 Problem 2 - CellRemoval

@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -12,8 +13,8 @@ public:
         sort(coordinates.begin(), coordinates.end());
 
         // Initialise min and max
-        int minPos = coordinates[0];
-        int maxPos = coordinates[coordinates.size() - 1];
+        int minPos = INT_MAX;
+        int maxPos = INT_MIN;
 
         // Iterate through all the coordinates and adjust the positions
         for (int i = 0; i < coordinates.size(); ++i) {
@@ -33,12 +34,14 @@ public:
                 // Move it left to reduce the gap
                 coordinates[i] = moveLeft;
             }
-            // If current position is within ranges
+            // If current position is within the ranges
             else {
-                // Move towards the min/max based on which gives a better range
-                if (current - minPos >= maxPos - current) {
+                // Check which is further away
+                if (current - minPos > maxPos - current) {
+                    // Move towards minPos
                     coordinates[i] = moveLeft;
                 } else {
+                    // Move towards maxPos
                     coordinates[i] = moveRight;
                 }
             }
