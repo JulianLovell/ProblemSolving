@@ -35,25 +35,37 @@ public:
             }
         }
 
-        // Create a new UnionFind for checking occupied towns connectivity
+        // Reinitialise Union-Find
         initUnionFind(N);
         int totalEffort = 0;
 
-        // Mark occupied towns for quick lookup
+        // Mark occupied towns for quick reference
         vector<bool> isOccupied(N, false);
         for (int town : occupiedTowns) {
             isOccupied[town] = true;
         }
 
-        // Remove edges in reverse order, starting from the most expensive
+        // Process edges in reverse order
         for (auto it = mst.rbegin(); it != mst.rend(); ++it) {
             int effort = get<0>(*it);
             int u = get<1>(*it);
             int v = get<2>(*it);
 
-            // If u and v are connected and are both occupied, then remove the edge
-            if (connected(u, v) && isOccupied[find(u)] && isOccupied[find(v)]) {
-                totalEffort += effort;
+            // If the edge connects two occupied regions, add its effort and do not unite
+            if (connected(u, v)) {
+                bool hasOccupiedConnection = false;
+                for (int town : occupiedTowns) {
+                    if (connected(u, town) && connected(v, town)) {
+                        hasOccupiedConnection = true;
+                        break;
+                    }
+                }
+
+                if (hasOccupiedConnection) {
+                    totalEffort += effort;
+                } else {
+                    unite(u, v);
+                }
             } else {
                 unite(u, v);
             }
