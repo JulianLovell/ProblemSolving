@@ -10,7 +10,6 @@ using namespace std;
 class BlockEnemy {
 public:
     int minEffort(int N, vector<string> roads, vector<int> occupiedTowns) {
-        // Parse the input roads to create an edge list
         vector<tuple<int, int, int>> edges;
         for (string road : roads) {
             stringstream ss(road);
@@ -19,10 +18,10 @@ public:
             edges.push_back({e, a, b});
         }
 
-        // Sort edges by effort
+        // Sort edges by effort in ascending order
         sort(edges.begin(), edges.end());
 
-        // Use Kruskal's algorithm
+        // Use Kruskal's algorithm to build the MST
         initUnionFind(N);
         vector<tuple<int, int, int>> mst;
         for (const auto& edge : edges) {
@@ -40,22 +39,20 @@ public:
         initUnionFind(N);
         int totalEffort = 0;
 
+        // Mark occupied towns for quick lookup
+        vector<bool> isOccupied(N, false);
+        for (int town : occupiedTowns) {
+            isOccupied[town] = true;
+        }
+
         // Remove edges in reverse order, starting from the most expensive
         for (auto it = mst.rbegin(); it != mst.rend(); ++it) {
             int effort = get<0>(*it);
             int u = get<1>(*it);
             int v = get<2>(*it);
 
-            // Check if u and v are connected through occupied towns
-            bool needsRemoval = false;
-            for (int town : occupiedTowns) {
-                if (connected(u, town) && connected(v, town)) {
-                    needsRemoval = true;
-                    break;
-                }
-            }
-
-            if (needsRemoval) {
+            // If u and v are connected and are both occupied, then remove the edge
+            if (connected(u, v) && isOccupied[find(u)] && isOccupied[find(v)]) {
                 totalEffort += effort;
             } else {
                 unite(u, v);
@@ -65,10 +62,8 @@ public:
         return totalEffort;
     }
 
-    // UnionFind data structures
     vector<int> parent, rank;
 
-    // Initialise the UnionFind structure
     void initUnionFind(int n) {
         parent.resize(n);
         rank.assign(n, 0);
@@ -77,7 +72,6 @@ public:
         }
     }
 
-    // Find function for UnionFind
     int find(int x) {
         if (parent[x] != x) {
             parent[x] = find(parent[x]);
@@ -85,7 +79,6 @@ public:
         return parent[x];
     }
 
-    // Union function for UnionFind
     void unite(int x, int y) {
         int rootX = find(x);
         int rootY = find(y);
@@ -101,7 +94,6 @@ public:
         }
     }
 
-    // Check if two nodes are connected
     bool connected(int x, int y) {
         return find(x) == find(y);
     }
