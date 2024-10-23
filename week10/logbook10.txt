@@ -7,8 +7,12 @@ The next step will be to then iterate over both strings, with a counter that wil
 The bit i am struggling with is how to select the letter to add, and then the logic to decide if it goes on the front or end of the string.
 
 Troubleshooting:
+I overcomplicated my approach by trying to manually extend A to match the length of B, character by character. This made is difficult to find and optimal solution. After rethinking, i realised that 
+a better approach was to compare A against all possible subtrings of B that are of the same length as A. This simplified the process and allowed for a simpler calculation of the min difference.
 
 Reflection:
+Switching to a sliding window approach made the problem much easier to solve. By focussing on comparing A directly with subtrings of B, i avoided unnecessary complexity and was able to detirmine the minimum
+number of differences. The key here was understanding that extending A step by step was really a waste of time, instead, finding the optimal alignment of A with a subtring of B was better.\
 
 
 Problem 2 = BigBurger
@@ -17,8 +21,11 @@ This one doesnt seem too bad. I think i can just have a counter, that can increa
 first checking if there is already a customer being served, then if not, checking if there is a customer waiting, then increasing a waitTotal counter at every point where there is both a customer waiting and one being served.
 
 Troubleshooting:
+I misunderstood the problem, thinking i needed to find the total wait time instead of the maximum wait time for a single customer. After re-reading, i adjusted my strategy to track the earliest time that the
+next customer could be served and updated the arrival times accordingly. Treating the arrival time as the actual service time instead.
 
 Reflection:
+I found this problem fairly easy, and while i had the wrong strategy initially, and misunderstood the problem, i was able to resolve it and get the solution quickly.
 
 
 Problem 3 = BridgeSort
