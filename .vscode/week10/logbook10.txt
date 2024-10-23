@@ -1,0 +1,39 @@
+JULIAN'S LOGBOOK
+
+Problem 1 - DifferentStrings
+Design Ideas:
+I think i need ot do this in 2 different steps. There will be a step to get the 2 words to be the same length, choosing and placing letters in a way that maximises the number in the right position.
+The next step will be to then iterate over both strings, with a counter that will increase +1 with every index that does not match.
+The bit i am struggling with is how to select the letter to add, and then the logic to decide if it goes on the front or end of the string.
+
+Troubleshooting:
+
+Reflection:
+
+
+Problem 2 = BigBurger
+Design Ideas:
+This one doesnt seem too bad. I think i can just have a counter, that can increase as i iterate through the times. I can set up a fake clock counter, using a for loop, that will iterate through,
+first checking if there is already a customer being served, then if not, checking if there is a customer waiting, then increasing a waitTotal counter at every point where there is both a customer waiting and one being served.
+
+Troubleshooting:
+
+Reflection:
+
+
+Problem 3 = BridgeSort
+Design Ideas:
+So the order to sort is going to be Clubs, Diamonds, Hearts, Spades. And then within that, 1-10, J, Q, K, A. I think i can do this in 2 seperate sorts. I think it would actually be easiest to seperate them into
+4 different vectors, 1 for each suit, and then just sort the numbers within each vector, before joining them all together in the correct order.
+
+Troubleshooting:
+
+Reflection:
+
+
+Problem 4 - BlockEnemy
+Design Ideas:
+
+Troubleshooting:
+
+Reflection:
