@@ -34,8 +34,10 @@ So the order to sort is going to be Clubs, Diamonds, Hearts, Spades. And then wi
 4 different vectors, 1 for each suit, and then just sort the numbers within each vector, before joining them all together in the correct order.
 
 Troubleshooting:
+My initial plan worked.
 
 Reflection:
+My plan here was correct and once i got the actual code down, it worked first time. I am quite happy with that.
 
 
 Problem 4 - BlockEnemy
