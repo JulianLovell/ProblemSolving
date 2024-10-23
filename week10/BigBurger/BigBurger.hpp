@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class bigBurger{
+class BigBurger{
     public:
     int maxWait(vector<int> arrival, vector<int> service){
         int longestWait = 0;
