@@ -48,5 +48,8 @@ then we identify and remove the min set of edges that seperates the occupied tow
 Troubleshooting:
 This has probably been the most complicated problem to code so far. While i know exactly how to solve it in terms of the design. The code itself is difficult. These are all concepts i have learned so it is just going 
 to be about getting it done, regardless of time.
+I struggled with my first few attempts at this before realising i was overcomplicating it. My design was correct but my code was very wrong. Using the same ideas i simplified the code and was able to get it working.
 
 Reflection:
+A very tough problem, luckily i understood it and the design route to take, so the issues were just down to being able to code it rather than not properly understanding it or the correct design to produce. 
+That is definelty a better problem to have and i was able to get it in the end.
