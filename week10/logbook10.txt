@@ -42,7 +42,11 @@ My plan here was correct and once i got the actual code down, it worked first ti
 
 Problem 4 - BlockEnemy
 Design Ideas:
+Since we need to disconnect all occupied towns by removing roads with the least effort, we can treat the problem as finding a minimum cut in a graph. First, we represent the roads and efforts as a weighted graph,
+then we identify and remove the min set of edges that seperates the occupied towns. Then using Kruskals algorithm for a MST, we find the min effort required to disconnect the towns.
 
 Troubleshooting:
+This has probably been the most complicated problem to code so far. While i know exactly how to solve it in terms of the design. The code itself is difficult. These are all concepts i have learned so it is just going 
+to be about getting it done, regardless of time.
 
 Reflection:
