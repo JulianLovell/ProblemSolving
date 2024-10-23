@@ -9,104 +9,91 @@ using namespace std;
 
 class BlockEnemy {
 public:
-    int minEffort(int N, vector<string> roads, vector<int> occupiedTowns) {
-        vector<tuple<int, int, int>> edges;
-        for (string road : roads) {
-            stringstream ss(road);
-            int a, b, e;
-            ss >> a >> b >> e;
-            edges.push_back({e, a, b});
-        }
+    // Structure to represent a road
+    struct Road {
+        int a;
+        int b;
+        int effort;
+    };
 
-        // Sort edges by effort in ascending order
-        sort(edges.begin(), edges.end());
+    // Union-Find structure
+    struct UnionFind {
+        vector<int> parent;
+        vector<bool> hasOccupied;
 
-        // Use Kruskal's algorithm to build the MST
-        initUnionFind(N);
-        vector<tuple<int, int, int>> mst;
-        for (const auto& edge : edges) {
-            int effort = get<0>(edge);
-            int u = get<1>(edge);
-            int v = get<2>(edge);
-
-            if (!connected(u, v)) {
-                unite(u, v);
-                mst.push_back(edge);
+        UnionFind(int n, const vector<bool>& isOccupied) {
+            parent.resize(n);
+            hasOccupied.resize(n, false);
+            for(int i=0;i<n;i++) {
+                parent[i] = i;
+                if(isOccupied[i]) {
+                    hasOccupied[i] = true;
+                }
             }
         }
 
-        // Reinitialise Union-Find
-        initUnionFind(N);
-        int totalEffort = 0;
+        int find_set(int x) {
+            if(parent[x] != x)
+                parent[x] = find_set(parent[x]);
+            return parent[x];
+        }
 
-        // Mark occupied towns for quick reference
+        void union_set(int x, int y) {
+            int fx = find_set(x);
+            int fy = find_set(y);
+            if(fx != fy) {
+                parent[fy] = fx;
+                hasOccupied[fx] = hasOccupied[fx] || hasOccupied[fy];
+            }
+        }
+
+        bool connected_with_occupied(int x, int y) {
+            return hasOccupied[find_set(x)] && hasOccupied[find_set(y)];
+        }
+    };
+
+    int minEffort(int N, vector<string> roads, vector<int> occupiedTowns) {
+        // Parse roads into Road structures
+        vector<Road> roadList;
+        for(const string& roadStr : roads) {
+            stringstream ss(roadStr);
+            int a, b, e;
+            ss >> a >> b >> e;
+            roadList.push_back(Road{a, b, e});
+        }
+
+        // Sort roads in descending order of effort
+        sort(roadList.begin(), roadList.end(), [&](const Road& x, const Road& y) -> bool {
+            return x.effort > y.effort;
+        });
+
+        // Mark occupied towns
         vector<bool> isOccupied(N, false);
-        for (int town : occupiedTowns) {
+        for(int town : occupiedTowns) {
             isOccupied[town] = true;
         }
 
-        // Process edges in reverse order
-        for (auto it = mst.rbegin(); it != mst.rend(); ++it) {
-            int effort = get<0>(*it);
-            int u = get<1>(*it);
-            int v = get<2>(*it);
+        // Initialise Union-Find
+        UnionFind uf(N, isOccupied);
 
-            // If the edge connects two occupied regions, add its effort and do not unite
-            if (connected(u, v)) {
-                bool hasOccupiedConnection = false;
-                for (int town : occupiedTowns) {
-                    if (connected(u, town) && connected(v, town)) {
-                        hasOccupiedConnection = true;
-                        break;
-                    }
-                }
+        long long totalEffort = 0;
 
-                if (hasOccupiedConnection) {
-                    totalEffort += effort;
-                } else {
-                    unite(u, v);
-                }
-            } else {
-                unite(u, v);
+        // Process roads
+        for(const Road& road : roadList) {
+            int a = road.a;
+            int b = road.b;
+            int e = road.effort;
+
+            // If connecting a and b would connect two occupied sets, cut the road
+            if(uf.connected_with_occupied(a, b)) {
+                totalEffort += e;
+            }
+            else {
+                // Otherwise connect them
+                uf.union_set(a, b);
             }
         }
 
-        return totalEffort;
-    }
-
-    vector<int> parent, rank;
-
-    void initUnionFind(int n) {
-        parent.resize(n);
-        rank.assign(n, 0);
-        for (int i = 0; i < n; ++i) {
-            parent[i] = i;
-        }
-    }
-
-    int find(int x) {
-        if (parent[x] != x) {
-            parent[x] = find(parent[x]);
-        }
-        return parent[x];
-    }
-
-    void unite(int x, int y) {
-        int rootX = find(x);
-        int rootY = find(y);
-        if (rootX != rootY) {
-            if (rank[rootX] > rank[rootY]) {
-                parent[rootY] = rootX;
-            } else if (rank[rootX] < rank[rootY]) {
-                parent[rootX] = rootY;
-            } else {
-                parent[rootY] = rootX;
-                rank[rootX]++;
-            }
-        }
-    }
-
-    bool connected(int x, int y) {
-        return find(x) == find(y);
+        return (int)totalEffort;
     }
 };
