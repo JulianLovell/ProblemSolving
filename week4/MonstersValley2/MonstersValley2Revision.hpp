@@ -40,3 +40,25 @@ public:
         return minCost;
     }
 };
+
+// Main function to run the test cases
+int main() {
+    MonstersValley2 mv2;
+
+    // Test case 0
+    vector<int> dread0 = {8, 5, 10};
+    vector<int> price0 = {1, 1, 2};
+    cout << "Test case 0: " << mv2.minimumPrice(dread0, price0) << " (Expected: 2)" << endl;
+
+    // Test case 1
+    vector<int> dread2 = {200, 107, 105, 206, 307, 400};
+    vector<int> price2 = {1, 2, 1, 1, 1, 2};
+    cout << "Test case 2: " << mv2.minimumPrice(dread2, price2) << " (Expected: 2)" << endl;
+
+    // Test case 2
+    vector<int> dread3 = {5216, 12512, 613, 1256, 66, 17202, 30000, 23512, 2125, 33333};
+    vector<int> price3 = {2, 2, 1, 1, 1, 1, 2, 1, 2, 1};
+    cout << "Test case 3: " << mv2.minimumPrice(dread3, price3) << " (Expected: 5)" << endl;
+
+    return 0;
+}
